@@ -22,8 +22,8 @@ class Starship: Codable {
     let mglt: String
     let cargoCapacity: Int
     let consumables: String
-    let films: [Film]
-    let pilots: [Character]
+//    let films: [Film]
+//    let pilots: [Character]
     let lastModified: Date
     
     enum CodingKeys: String, CodingKey {
@@ -40,8 +40,8 @@ class Starship: Codable {
         case mglt = "MGLT"
         case cargoCapacity = "cargo_capacity"
         case consumables = "consumables"
-        case films
-        case pilots
+//        case films
+//        case pilots
         case lastModified = "edited"
     }
 }
