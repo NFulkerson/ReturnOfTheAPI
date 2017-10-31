@@ -20,8 +20,8 @@ class Vehicle: Codable {
     let maxAtmosphereSpeed: Int
     let cargoCapacity: Int
     let consumables: String
-    let films: [Film]
-    let pilots: [Character]
+//    let films: [Film]
+//    let pilots: [Character]
     let lastModified: Date
     
     enum CodingKeys: String, CodingKey {
@@ -36,8 +36,8 @@ class Vehicle: Codable {
         case maxAtmosphereSpeed = "max_atmosphering_speed"
         case cargoCapacity = "cargo_capacity"
         case consumables
-        case films
-        case pilots
+//        case films
+//        case pilots
         case lastModified = "edited"
     }
 }
