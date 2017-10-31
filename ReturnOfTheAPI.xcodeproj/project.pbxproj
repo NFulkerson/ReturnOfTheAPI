@@ -18,6 +18,7 @@
 		D882D3AF1FA2D23500FF8D0A /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3AE1FA2D23500FF8D0A /* Film.swift */; };
 		D882D3B11FA2D2E800FF8D0A /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B01FA2D2E800FF8D0A /* Planet.swift */; };
 		D882D3B31FA339E800FF8D0A /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B21FA339E800FF8D0A /* Species.swift */; };
+		D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D882D3AE1FA2D23500FF8D0A /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		D882D3B01FA2D2E800FF8D0A /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		D882D3B21FA339E800FF8D0A /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
+		D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		D882D3A71FA2C96300FF8D0A /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
+				D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D882D3A91FA2D10700FF8D0A /* Character.swift in Sources */,
+				D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */,
 				D882D3AF1FA2D23500FF8D0A /* Film.swift in Sources */,
 				D882D3921FA2BE9800FF8D0A /* ViewController.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,
