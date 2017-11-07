@@ -17,10 +17,9 @@ extension Endpoint {
     var urlComponents: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
-        
         return components
     }
-    
+
     var request: URLRequest {
         let url = urlComponents.url!
         return URLRequest(url: url)
@@ -29,6 +28,7 @@ extension Endpoint {
 
 enum Swapi {
     case request(resource: SwapiResource, id: Int)
+    case list(resource: SwapiResource)
 }
 
 enum SwapiResource {
@@ -42,9 +42,9 @@ enum SwapiResource {
 
 extension Swapi: Endpoint {
     var base: String {
-        return "https://swapi.co/api"
+        return "https://swapi.co"
     }
-    
+
     var path: String {
         switch self {
         case .request(let resource, let id):
@@ -57,8 +57,17 @@ extension Swapi: Endpoint {
             case .planet: requestPath = "planets"
             case .species: requestPath = "species"
             }
-            return "/\(requestPath)/\(id)/"
+            return "/api/\(requestPath)/\(id)/"
+        case .list(let resource):
+            switch resource {
+            case .character: return "/api/people/"
+            case .starship: return "/api/starships/"
+            case .vehicle: return "/api/vehicles/"
+            case .film: return "/api/films/"
+            case .planet: return "/api/planets/"
+            case .species: return "/api/species/"
+            }
         }
     }
-    
+
 }
