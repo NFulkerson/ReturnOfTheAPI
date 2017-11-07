@@ -13,17 +13,17 @@ class Vehicle: Codable {
     let model: String
     let `class`: String
     let manufacturer: String
-    let length: Int
-    let costInCredits: Int
-    let crew: Int
-    let passengers: Int
-    let maxAtmosphereSpeed: Int
-    let cargoCapacity: Int
+    let length: String
+    let costInCredits: String
+    let crew: String
+    let passengers: String
+    let maxAtmosphereSpeed: String
+    let cargoCapacity: String
     let consumables: String
 //    let films: [Film]
 //    let pilots: [Character]
-    let lastModified: Date
-    
+    let lastModified: String
+
     enum CodingKeys: String, CodingKey {
         case name
         case model

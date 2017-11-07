@@ -12,17 +12,17 @@ class Species: Codable {
     let name: String
     let classification: String
     let designation: String
-    let averageHeight: Float
-    let averageLifespan: Int
+    let averageHeight: String
+    let averageLifespan: String
     let eyeColors: String
     let hairColors: String
     let skinColors: String
     let language: String
     let homeworld: Planet
-    let people: [Character]
-    let films: [Film]
-    let lastModified: Date
-    
+//    let people: [Character]
+//    let films: [Film]
+    let lastModified: String
+
     enum CodingKeys: String, CodingKey {
         case name
         case classification
@@ -34,8 +34,8 @@ class Species: Codable {
         case skinColors = "skin_colors"
         case language
         case homeworld
-        case people
-        case films
+//        case people
+//        case films
         case lastModified = "edited"
     }
 }

@@ -13,19 +13,19 @@ class Starship: Codable {
     let model: String
     let starshipClass: String
     let manufacturer: String
-    let costInCredits: Int
-    let length: Int
-    let crew: Int
-    let passengers: Int
-    let maxAtmosphereSpeed: Int
-    let hyperdriveRating: Double
+    let costInCredits: String
+    let length: String
+    let crew: String
+    let passengers: String
+    let maxAtmosphereSpeed: String
+    let hyperdriveRating: String
     let mglt: String
-    let cargoCapacity: Int
+    let cargoCapacity: String
     let consumables: String
 //    let films: [Film]
 //    let pilots: [Character]
-    let lastModified: Date
-    
+    let lastModified: String
+
     enum CodingKeys: String, CodingKey {
         case name
         case model

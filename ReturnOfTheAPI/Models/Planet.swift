@@ -10,18 +10,18 @@ import Foundation
 
 class Planet: Codable {
     let name: String
-    let diameter: Int
-    let rotationPeriod: Int
-    let orbitalPeriod: Int
-    let gravity: Double
-    let population: Int
+    let diameter: String
+    let rotationPeriod: String
+    let orbitalPeriod: String
+    let gravity: String
+    let population: String
     let climate: String
     let terrain: String
-    let surfaceWater: Int
-    let residents: [Character]
-    let films: [Film]
-    let lastModified: Date
-    
+    let surfaceWater: String
+//    let residents: [Character]
+//    let films: [Film]
+    let lastModified: String
+
     enum CodingKeys: String, CodingKey {
         case name
         case diameter
@@ -32,8 +32,8 @@ class Planet: Codable {
         case climate
         case terrain
         case surfaceWater = "surface_water"
-        case residents
-        case films
+//        case residents
+//        case films
         case lastModified = "edited"
     }
 }
