@@ -12,7 +12,7 @@ class VehicleList: Decodable {
     let count: Int
     let paginationURL: String
     let results: [Character]
-    
+
     enum CodingKeys: String, CodingKey {
         case count
         case paginationURL = "next"

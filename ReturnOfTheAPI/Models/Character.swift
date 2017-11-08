@@ -7,37 +7,53 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Character: Codable {
-    let birthYear: String
-    let eyeColor: String
+class Character: RealmSwift.Object, Codable {
+    @objc dynamic var birthYear: String = ""
+    @objc dynamic var eyeColor: String = ""
 //    let films: [Film]
-    let gender: String
-    let hairColor: String
-    let height: String
+    @objc dynamic var gender: String = ""
+    @objc dynamic var hairColor: String = ""
+    @objc dynamic var height: String = ""
 //    let homeworld: Planet
-    let mass: String
-    let name: String
-    let skinColor: String
-    let lastModified: String
+    @objc dynamic var mass: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var skinColor: String = ""
 //    let species: [Species]
 //    let starships: [Starship]
 //    let vehicles: [Vehicle]
 
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+
     enum CodingKeys: String, CodingKey {
         case birthYear = "birth_year"
         case eyeColor = "eye_color"
-//        case films
+        //        case films
         case gender
         case hairColor = "hair_color"
         case height
-//        case homeworld
+        //        case homeworld
         case mass
         case name
         case skinColor = "skin_color"
-        case lastModified = "edited"
-//        case species
-//        case starships
-//        case vehicles
+        //        case species
+        //        case starships
+        //        case vehicles
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        birthYear = try container.decode(String.self, forKey: .birthYear)
+        eyeColor = try container.decode(String.self, forKey: .eyeColor)
+        gender = try container.decode(String.self, forKey: .gender)
+        hairColor = try container.decode(String.self, forKey: .hairColor)
+        height = try container.decode(String.self, forKey: .height)
+        mass = try container.decode(String.self, forKey: .mass)
+        name = try container.decode(String.self, forKey: .name)
+        skinColor = try container.decode(String.self, forKey: .skinColor)
     }
 }

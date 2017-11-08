@@ -12,7 +12,7 @@ class StarshipList: Decodable {
     let count: Int
     let paginationURL: String
     let results: [Starship]
-    
+
     enum CodingKeys: String, CodingKey {
         case count
         case paginationURL = "next"
