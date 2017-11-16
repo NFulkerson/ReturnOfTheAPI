@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8142C401FA9D86000305587 /* JSONDownloader.swift */; };
 		D8142C431FA9D93100305587 /* SwapiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8142C421FA9D93100305587 /* SwapiError.swift */; };
+		D825091C1FBDFC80001C71C8 /* SwapiDecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D825091B1FBDFC80001C71C8 /* SwapiDecodeOperation.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
 		D8732AA91FB1931D00769FAD /* StarshipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AA81FB1931D00769FAD /* StarshipList.swift */; };
@@ -34,10 +35,6 @@
 		D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */; };
 		D89EABBF1FAB810E00F13C04 /* QueryItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABBE1FAB810E00F13C04 /* QueryItemProvider.swift */; };
 		D89EABC11FAB934800F13C04 /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABC01FAB934800F13C04 /* CharacterList.swift */; };
-		D8B856981FBD699400F96895 /* GetSwapiResourceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B856971FBD699400F96895 /* GetSwapiResourceOperation.swift */; };
-		D8B8569A1FBD733600F96895 /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B856991FBD733600F96895 /* PendingOperations.swift */; };
-		D8B8569C1FBDD87C00F96895 /* CharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8569B1FBDD87C00F96895 /* CharacterDataSource.swift */; };
-		D8DF0B121FB5C611001C9060 /* PaginatedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DF0B111FB5C611001C9060 /* PaginatedData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +55,7 @@
 /* Begin PBXFileReference section */
 		D8142C401FA9D86000305587 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		D8142C421FA9D93100305587 /* SwapiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiError.swift; sourceTree = "<group>"; };
+		D825091B1FBDFC80001C71C8 /* SwapiDecodeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiDecodeOperation.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
 		D8732AA81FB1931D00769FAD /* StarshipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipList.swift; sourceTree = "<group>"; };
@@ -83,10 +81,6 @@
 		D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIClient.swift; sourceTree = "<group>"; };
 		D89EABBE1FAB810E00F13C04 /* QueryItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemProvider.swift; sourceTree = "<group>"; };
 		D89EABC01FAB934800F13C04 /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
-		D8B856971FBD699400F96895 /* GetSwapiResourceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSwapiResourceOperation.swift; sourceTree = "<group>"; };
-		D8B856991FBD733600F96895 /* PendingOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
-		D8B8569B1FBDD87C00F96895 /* CharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataSource.swift; sourceTree = "<group>"; };
-		D8DF0B111FB5C611001C9060 /* PaginatedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D825091A1FBDFC43001C71C8 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				D825091B1FBDFC80001C71C8 /* SwapiDecodeOperation.swift */,
+			);
+			name = Operations;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		D882D3831FA2BE9800FF8D0A = {
 			isa = PBXGroup;
 			children = (
@@ -123,9 +126,8 @@
 		D882D38E1FA2BE9800FF8D0A /* ReturnOfTheAPI */ = {
 			isa = PBXGroup;
 			children = (
-				D8B856961FBD695500F96895 /* Operations */,
+				D825091A1FBDFC43001C71C8 /* Operations */,
 				D882D3A41FA2C90900FF8D0A /* Controllers */,
-				D882D3A31FA2C8FC00FF8D0A /* Data Sources */,
 				D882D3A61FA2C92300FF8D0A /* Models */,
 				D882D3A11FA2C8E400FF8D0A /* Networking */,
 				D882D3A51FA2C91500FF8D0A /* Views */,
@@ -159,14 +161,6 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
-		D882D3A31FA2C8FC00FF8D0A /* Data Sources */ = {
-			isa = PBXGroup;
-			children = (
-				D8B8569B1FBDD87C00F96895 /* CharacterDataSource.swift */,
-			);
-			path = "Data Sources";
-			sourceTree = "<group>";
-		};
 		D882D3A41FA2C90900FF8D0A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +189,6 @@
 				D89EABC01FAB934800F13C04 /* CharacterList.swift */,
 				D8732AA81FB1931D00769FAD /* StarshipList.swift */,
 				D8732AAA1FB1934300769FAD /* VehicleList.swift */,
-				D8DF0B111FB5C611001C9060 /* PaginatedData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,15 +201,6 @@
 				D8732AC11FB4380D00769FAD /* PaginatedResult.swift */,
 			);
 			path = Endpoint;
-			sourceTree = "<group>";
-		};
-		D8B856961FBD695500F96895 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				D8B856971FBD699400F96895 /* GetSwapiResourceOperation.swift */,
-				D8B856991FBD733600F96895 /* PendingOperations.swift */,
-			);
-			path = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +296,6 @@
 			files = (
 				D882D3A91FA2D10700FF8D0A /* Character.swift in Sources */,
 				D89EABBF1FAB810E00F13C04 /* QueryItemProvider.swift in Sources */,
-				D8B8569A1FBD733600F96895 /* PendingOperations.swift in Sources */,
 				D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */,
 				D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */,
 				D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */,
@@ -321,15 +304,13 @@
 				D8732AA91FB1931D00769FAD /* StarshipList.swift in Sources */,
 				D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */,
 				D882D3921FA2BE9800FF8D0A /* ViewController.swift in Sources */,
+				D825091C1FBDFC80001C71C8 /* SwapiDecodeOperation.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,
-				D8DF0B121FB5C611001C9060 /* PaginatedData.swift in Sources */,
 				D8732AAB1FB1934300769FAD /* VehicleList.swift in Sources */,
 				D882D3B31FA339E800FF8D0A /* Species.swift in Sources */,
 				D882D3B11FA2D2E800FF8D0A /* Planet.swift in Sources */,
-				D8B856981FBD699400F96895 /* GetSwapiResourceOperation.swift in Sources */,
 				D8732AC21FB4380D00769FAD /* PaginatedResult.swift in Sources */,
 				D89EABC11FAB934800F13C04 /* CharacterList.swift in Sources */,
-				D8B8569C1FBDD87C00F96895 /* CharacterDataSource.swift in Sources */,
 				D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */,
 				D882D3AD1FA2D12C00FF8D0A /* Vehicle.swift in Sources */,
 				D882D3AB1FA2D11200FF8D0A /* Starship.swift in Sources */,

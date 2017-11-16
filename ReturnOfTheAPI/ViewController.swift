@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let client = SwapiClient()
-        client.getPaginatedData(at: "https://swapi.co/api/people/?page=2") { characters, error in
+        client.getPaginatedData(string: "https://swapi.co/api/people/?page=2") { characters, error in
             guard let characters = characters else {
-                print(error as? Any)
+                print(error as Any)
                 return
             }
 
