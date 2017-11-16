@@ -11,6 +11,7 @@ import Foundation
 enum SwapiError: Error {
     case requestFailed
     case responseUnsuccessful
+    case networkInterruption
     case invalidData
     case decodingFailed(message: String)
 }
