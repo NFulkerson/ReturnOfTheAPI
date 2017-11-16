@@ -11,6 +11,7 @@ import Foundation
 protocol Endpoint {
     var base: String { get }
     var path: String { get }
+    var queryItems: [URLQueryItem] { get }
 }
 
 extension Endpoint {
@@ -29,6 +30,7 @@ extension Endpoint {
 enum Swapi {
     case request(resource: SwapiResource, id: Int)
     case list(resource: SwapiResource)
+    case pagedUrl(urlString: String)
 }
 
 enum SwapiResource {
@@ -67,6 +69,23 @@ extension Swapi: Endpoint {
             case .planet: return "/api/planets/"
             case .species: return "/api/species/"
             }
+        case .pagedUrl(let urlString):
+            guard let urlComponents = URLComponents(string: urlString) else {
+                return "/"
+            }
+            return urlComponents.path
+        }
+    }
+
+    var queryItems: [URLQueryItem] {
+        switch self {
+        case .pagedUrl(let urlString):
+            guard let urlComponents = URLComponents(string: urlString), let queryItems = urlComponents.queryItems else {
+                return []
+            }
+            return queryItems
+        default:
+            return []
         }
     }
 
