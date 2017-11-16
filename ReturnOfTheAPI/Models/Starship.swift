@@ -25,7 +25,7 @@ class Starship: RealmSwift.Object, Codable {
     @objc dynamic var consumables: String = ""
 //    let films: [Film]
 //    let pilots: [Character]
-    
+
     override static func primaryKey() -> String? {
         return "name"
     }
@@ -47,7 +47,7 @@ class Starship: RealmSwift.Object, Codable {
 //        case films
 //        case pilots
     }
-    
+
     required convenience init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -65,5 +65,4 @@ class Starship: RealmSwift.Object, Codable {
         cargoCapacity = try container.decode(String.self, forKey: .cargoCapacity)
         consumables = try container.decode(String.self, forKey: .consumables)
     }
-    
 }
