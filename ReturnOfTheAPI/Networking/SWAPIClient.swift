@@ -12,19 +12,41 @@ import RealmSwift
 class SwapiClient {
     fileprivate let downloader = JSONDownloader()
 
+    // MARK: - Realm Operations
+
+    func saveCharacter(resourceId: Int, to realm: Realm) {
+        let client = SwapiClient()
+        client.retrieveCharacter(with: resourceId) { character, error in
+            guard let character = character else {
+                print("Ruh roh")
+                print(error as Any)
+                return
+            }
+            try? realm.write {
+                realm.add(character, update: true)
+            }
+        }
+    }
+
+    // MARK: - Network Requests
+
     func retrieveCharacter(with resourceId: Int,
                            completion: @escaping (Character?, SwapiError?) -> Void) {
+
         let endpoint = Swapi.request(resource: .character, id: resourceId)
+
         performRequest(with: endpoint) { data, error in
+
             guard let data = data else {
                 completion(nil, error)
                 return
             }
+
             let decoder = JSONDecoder()
+
             do {
                 let character = try decoder.decode(Character.self, from: data)
                 completion(character, nil)
-
             } catch {
                 completion(nil, .decodingFailed(message: String(describing: error)))
             }
@@ -33,12 +55,15 @@ class SwapiClient {
 
     func getPaginatedData(for resource: SwapiResource,
                           completion: @escaping ([Character]?, SwapiError?) -> Void) {
+
         let endpoint = Swapi.list(resource: resource)
+
         performRequest(with: endpoint) { data, error in
             guard let data = data else {
                 completion(nil, error)
                 return
             }
+
             let decoder = JSONDecoder()
             do {
                 let characterResults = try decoder.decode(CharacterList.self, from: data)
@@ -50,7 +75,7 @@ class SwapiClient {
         }
     }
 
-    func getPaginatedData(at urlString: String,
+    func getPaginatedData(string urlString: String,
                           completion: @escaping ([Character]?, SwapiError?) -> Void) {
         print("Url String: \(urlString)")
 
@@ -86,17 +111,4 @@ class SwapiClient {
         task.resume()
     }
 
-    func saveCharacter(resourceId: Int, to realm: Realm) {
-        let client = SwapiClient()
-        client.retrieveCharacter(with: resourceId) { character, error in
-            guard let character = character else {
-                print("Ruh roh")
-                print(error as Any)
-                return
-            }
-            try? realm.write {
-                realm.add(character, update: true)
-            }
-        }
-    }
 }

@@ -22,7 +22,7 @@ class JSONDownloader {
     typealias JSONTaskCompletionHandler = (Data?, SwapiError?) -> Void
 
     func jsonDataTask(with request: URLRequest,
-                      completionhandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
+                      completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, response, error in
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(nil, .requestFailed)
