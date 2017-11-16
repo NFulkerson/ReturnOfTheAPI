@@ -7,20 +7,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Film: Codable {
-    let title: String
-    let episodeId: String
-    let openingCrawl: String
-    let director: String
-    let producer: String
-    let releaseDate: String
+class Film: RealmSwift.Object, Codable {
+    @objc dynamic var title: String = ""
+    @objc dynamic var episodeId: String = ""
+    @objc dynamic var openingCrawl: String = ""
+    @objc dynamic var director: String = ""
+    @objc dynamic var producer: String = ""
+    @objc dynamic var releaseDate: String = ""
     //let characters: [Character]
     //let planets: [Planet]
     //let starships: [Starship]
     //let vehicles: [Vehicle]
     //let species: [Species]
-    let lastModified: String
 
     enum CodingKeys: String, CodingKey {
         case title
@@ -34,6 +34,16 @@ class Film: Codable {
         //case starships
         //case vehicles
         //case species
-        case lastModified = "edited"
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        title = try container.decode(String.self, forKey: .title)
+        episodeId = try container.decode(String.self, forKey: .episodeId)
+        openingCrawl = try container.decode(String.self, forKey: .openingCrawl)
+        director = try container.decode(String.self, forKey: .director)
+        producer = try container.decode(String.self, forKey: .producer)
+        releaseDate = try container.decode(String.self, forKey: .releaseDate)
     }
 }

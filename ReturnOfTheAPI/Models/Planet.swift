@@ -7,20 +7,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Planet: Codable {
-    let name: String
-    let diameter: String
-    let rotationPeriod: String
-    let orbitalPeriod: String
-    let gravity: String
-    let population: String
-    let climate: String
-    let terrain: String
-    let surfaceWater: String
+class Planet: RealmSwift.Object, Codable {
+    @objc dynamic var name: String = ""
+    @objc dynamic var diameter: String = ""
+    @objc dynamic var rotationPeriod: String = ""
+    @objc dynamic var orbitalPeriod: String = ""
+    @objc dynamic var gravity: String = ""
+    @objc dynamic var population: String = ""
+    @objc dynamic var climate: String = ""
+    @objc dynamic var terrain: String = ""
+    @objc dynamic var surfaceWater: String = ""
 //    let residents: [Character]
 //    let films: [Film]
-    let lastModified: String
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -34,6 +34,19 @@ class Planet: Codable {
         case surfaceWater = "surface_water"
 //        case residents
 //        case films
-        case lastModified = "edited"
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        diameter = try container.decode(String.self, forKey: .diameter)
+        rotationPeriod = try container.decode(String.self, forKey: .rotationPeriod)
+        orbitalPeriod = try container.decode(String.self, forKey: .orbitalPeriod)
+        gravity = try container.decode(String.self, forKey: .gravity)
+        population = try container.decode(String.self, forKey: .population)
+        climate = try container.decode(String.self, forKey: .climate)
+        terrain = try container.decode(String.self, forKey: .terrain)
+        surfaceWater = try container.decode(String.self, forKey: .surfaceWater)
     }
 }

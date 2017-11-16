@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol Endpoint {
     var base: String { get }
@@ -41,6 +42,23 @@ enum SwapiResource {
     case film
     case planet
     case species
+
+    var model: Object.Type {
+        switch self {
+        case .character:
+            return Character.self
+        case .starship:
+            return Starship.self
+        case .vehicle:
+            return Vehicle.self
+        case .film:
+            return Film.self
+        case .planet:
+            return Planet.self
+        case .species:
+            return Species.self
+        }
+    }
 }
 
 extension Swapi: Endpoint {
