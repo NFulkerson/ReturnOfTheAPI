@@ -13,12 +13,15 @@ class SwapiViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     @IBOutlet weak var itemPicker: UIPickerView!
     var items: Results<Character>?
+    let client: SwapiClient = SwapiClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         itemPicker.delegate = self
         itemPicker.dataSource = self
         itemPicker.backgroundColor = .black
+
+        client.saveResultList(from: "https://swapi.co/api/people/?page=4")
 
         do {
             let realm = try Realm()
