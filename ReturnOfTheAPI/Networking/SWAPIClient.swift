@@ -11,22 +11,11 @@ import RealmSwift
 
 class SwapiClient {
     fileprivate let downloader = JSONDownloader()
-
-    // MARK: - Realm Operations
-
-    func saveCharacter(resourceId: Int, to realm: Realm) {
-        let client = SwapiClient()
-        client.retrieveCharacter(with: resourceId) { character, error in
-            guard let character = character else {
-                print("Ruh roh")
-                print(error as Any)
-                return
-            }
-            try? realm.write {
-                realm.add(character, update: true)
-            }
-        }
-    }
+    fileprivate lazy var operationQueue: OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "com.nfulkerson.swapiclient"
+        return queue
+    }()
 
     // MARK: - Network Requests
 
@@ -94,6 +83,24 @@ class SwapiClient {
                 completion(nil, .decodingFailed(message: String(describing: error)))
             }
         }
+    }
+
+    func saveResultList(from urlString: String) {
+        let endpoint = Swapi.pagedUrl(urlString: urlString)
+        performRequest(with: endpoint) { [weak self] data, error in
+            guard let data = data else {
+                print(error)
+                return
+            }
+            self?.operationQueue.qualityOfService = .userInteractive
+            let decodeAndSaveOp = SwapiDecodeOperation(with: data, for: SwapiResource.character)
+            self?.operationQueue.addOperation(decodeAndSaveOp)
+            print("Inside Closure: \(self?.operationQueue.isSuspended)")
+            print("Inside closure: \(self?.operationQueue.operationCount)")
+
+        }
+        print(operationQueue.isSuspended)
+        print(operationQueue.operationCount)
     }
 
     private func performRequest(with endpoint: Endpoint,
