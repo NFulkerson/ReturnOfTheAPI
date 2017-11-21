@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Film: RealmSwift.Object, Codable {
+final class Film: RealmSwift.Object, Codable {
     @objc dynamic var title: String = ""
     @objc dynamic var episodeId: String = ""
     @objc dynamic var openingCrawl: String = ""

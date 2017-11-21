@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Planet: RealmSwift.Object, Codable {
+final class Planet: RealmSwift.Object, Codable {
     @objc dynamic var name: String = ""
     @objc dynamic var diameter: String = ""
     @objc dynamic var rotationPeriod: String = ""

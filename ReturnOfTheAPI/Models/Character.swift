@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Character: RealmSwift.Object, Codable {
+final class Character: RealmSwift.Object, Codable {
     @objc dynamic var birthYear: String = ""
     @objc dynamic var eyeColor: String = ""
 //    let films: [Film]

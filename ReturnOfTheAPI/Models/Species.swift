@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Species: RealmSwift.Object, Codable {
+final class Species: RealmSwift.Object, Codable {
     @objc dynamic var name: String = ""
     @objc dynamic var classification: String = ""
     @objc dynamic var designation: String = ""
