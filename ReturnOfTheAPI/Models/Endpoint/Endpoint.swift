@@ -27,6 +27,14 @@ extension Endpoint {
         let url = urlComponents.url!
         return URLRequest(url: url)
     }
+
+    var url: URL {
+        return urlComponents.url!
+    }
+
+    var resource: SwapiResource {
+        return SwapiResource(rawValue: urlComponents.path)!
+    }
 }
 
 enum Swapi {
@@ -35,13 +43,13 @@ enum Swapi {
     case pagedUrl(urlString: String)
 }
 
-enum SwapiResource {
-    case character
-    case starship
-    case vehicle
-    case film
-    case planet
-    case species
+enum SwapiResource: String {
+    case character = "/api/people/"
+    case starship = "/api/starships/"
+    case vehicle = "/api/vehicles/"
+    case film = "/api/films/"
+    case planet = "/api/planets/"
+    case species = "/api/species/"
 
     var model: Object.Type {
         switch self {
@@ -59,6 +67,7 @@ enum SwapiResource {
             return Species.self
         }
     }
+
 }
 
 extension Swapi: Endpoint {
@@ -80,14 +89,7 @@ extension Swapi: Endpoint {
             }
             return "/api/\(requestPath)/\(id)/"
         case .list(let resource):
-            switch resource {
-            case .character: return "/api/people/"
-            case .starship: return "/api/starships/"
-            case .vehicle: return "/api/vehicles/"
-            case .film: return "/api/films/"
-            case .planet: return "/api/planets/"
-            case .species: return "/api/species/"
-            }
+            return resource.rawValue
         case .pagedUrl(let urlString):
             guard let urlComponents = URLComponents(string: urlString) else {
                 return "/"
