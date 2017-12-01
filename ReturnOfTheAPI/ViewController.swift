@@ -14,16 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let client = SwapiClient()
-        client.getPaginatedData(string: "https://swapi.co/api/people/?page=2") { characters, error in
-            guard let characters = characters else {
-                print(error as Any)
-                return
-            }
-
-            for character in characters {
-                print(character.name)
-            }
-        }
         // Do any additional setup after loading the view, typically from a nib.
 //        do {
 //            let realm = try Realm()

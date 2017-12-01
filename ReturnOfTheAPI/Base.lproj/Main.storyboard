@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WBj-ih-CKw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giG-Js-2qY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="30" y="132"/>
         </scene>
-        <!--Item-->
+        <!--Characters-->
         <scene sceneID="bgj-Kt-8Qa">
             <objects>
                 <viewController id="dvL-kT-FqX" sceneMemberID="viewController">
@@ -88,13 +88,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uB4-Pe-AhO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="iIS-3G-3og"/>
+                    <tabBarItem key="tabBarItem" title="Characters" image="character-tab-icon" id="iIS-3G-3og"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAU-tW-qz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1641" y="133"/>
         </scene>
-        <!--Item-->
+        <!--Starships-->
         <scene sceneID="oCe-dt-Xg7">
             <objects>
                 <viewController id="JF3-7L-LKb" sceneMemberID="viewController">
@@ -118,13 +118,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pXR-Yv-hcG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="h9j-2h-wyw"/>
+                    <tabBarItem key="tabBarItem" title="Starships" image="starship-tab-icon" id="h9j-2h-wyw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MP4-tK-dfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1641" y="-543"/>
         </scene>
-        <!--Item-->
+        <!--Vehicles-->
         <scene sceneID="0hI-nr-jZ4">
             <objects>
                 <viewController id="MJ1-Ff-B95" sceneMemberID="viewController">
@@ -148,7 +148,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lae-jV-2kL"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="hFR-gy-OCP"/>
+                    <tabBarItem key="tabBarItem" title="Vehicles" image="vehicle-tab-icon" id="hFR-gy-OCP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQk-Kw-8e5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,13 +189,13 @@
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luke Skywalker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6M-DW-WRZ">
-                                <rect key="frame" x="128.5" y="38" width="118.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="109.5" y="38" width="156.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="KoS-J2-gzh">
-                                <rect key="frame" x="16" y="98.5" width="343" height="134.5"/>
+                                <rect key="frame" x="16" y="104.5" width="343" height="134.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e5F-aO-G5Q">
                                         <rect key="frame" x="0.0" y="0.0" width="152.5" height="134.5"/>
@@ -285,7 +285,9 @@
                         <viewLayoutGuide key="safeArea" id="qeb-Xr-tz0"/>
                     </view>
                     <connections>
+                        <outlet property="bornLabel" destination="iLL-Jg-cRL" id="VuC-h7-PDx"/>
                         <outlet property="itemPicker" destination="xGW-Uy-fa1" id="MdM-7d-Vpi"/>
+                        <outlet property="nameLabel" destination="T6M-DW-WRZ" id="Ygn-wi-uzz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfh-px-2lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -294,9 +296,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="character-tab-icon" width="11" height="23"/>
         <image name="icon-characters" width="100" height="100"/>
         <image name="icon-starships" width="100" height="100"/>
         <image name="icon-vehicles" width="100" height="100"/>
+        <image name="starship-tab-icon" width="19" height="23"/>
+        <image name="vehicle-tab-icon" width="17" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7sk-da-Pmv"/>
