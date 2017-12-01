@@ -19,6 +19,16 @@ class SwapiClient {
 
     // MARK: - Network Requests
 
+    func retrieveResources(for type: SwapiResource) {
+        let endpoint = Swapi.list(resource: type)
+        retrieveResources(at: endpoint)
+    }
+
+    func retrieveResource(with urlString: String) {
+        let endpoint = Swapi.pagedUrl(urlString: urlString)
+        retrieveResources(at: endpoint)
+    }
+
     func retrieveCharacter(with resourceId: Int,
                            completion: @escaping (Character?, SwapiError?) -> Void) {
 
@@ -42,65 +52,24 @@ class SwapiClient {
         }
     }
 
-    func getPaginatedData(for resource: SwapiResource,
-                          completion: @escaping ([Character]?, SwapiError?) -> Void) {
+    private func retrieveResources(at endpoint: Endpoint) {
+        let fetch = SwapiFetchOperation(with: endpoint)
+        let decode = SwapiDecodeOperation(for: endpoint.resource)
 
-        let endpoint = Swapi.list(resource: resource)
+        let adapter = BlockOperation { [unowned fetch, unowned decode] in
+            decode.jsonData = fetch.data
+        }
 
-        performRequest(with: endpoint) { data, error in
-            guard let data = data else {
-                completion(nil, error)
-                return
-            }
+        adapter.addDependency(fetch)
+        decode.addDependency(adapter)
 
-            let decoder = JSONDecoder()
-            do {
-                let characterResults = try decoder.decode(CharacterList.self, from: data)
-                let characters = characterResults.results
-                completion(characters, nil)
-            } catch {
-                completion(nil, .decodingFailed(message: String(describing: error)))
+        decode.completionBlock = { [unowned decode, unowned self] in
+            if decode.resourceHasMorePages {
+                self.retrieveResource(with: decode.nextUrl)
             }
         }
-    }
 
-    func getPaginatedData(string urlString: String,
-                          completion: @escaping ([Character]?, SwapiError?) -> Void) {
-        print("Url String: \(urlString)")
-
-        let endpoint = Swapi.pagedUrl(urlString: urlString)
-        performRequest(with: endpoint) { data, error in
-            guard let data = data else {
-                completion(nil, error)
-                return
-            }
-            let decoder = JSONDecoder()
-            do {
-                let results = try decoder.decode(CharacterList.self, from: data)
-                let characters = results.results
-                completion(characters, nil)
-            } catch {
-                completion(nil, .decodingFailed(message: String(describing: error)))
-            }
-        }
-    }
-
-    func saveResultList(from urlString: String) {
-        let endpoint = Swapi.pagedUrl(urlString: urlString)
-        performRequest(with: endpoint) { [weak self] data, error in
-            guard let data = data else {
-                print(error)
-                return
-            }
-            self?.operationQueue.qualityOfService = .userInteractive
-            let decodeAndSaveOp = SwapiDecodeOperation(with: data, for: SwapiResource.character)
-            self?.operationQueue.addOperation(decodeAndSaveOp)
-            print("Inside Closure: \(self?.operationQueue.isSuspended)")
-            print("Inside closure: \(self?.operationQueue.operationCount)")
-
-        }
-        print(operationQueue.isSuspended)
-        print(operationQueue.operationCount)
+        operationQueue.addOperations([fetch, decode, adapter], waitUntilFinished: true)
     }
 
     private func performRequest(with endpoint: Endpoint,
@@ -111,7 +80,6 @@ class SwapiClient {
                     completion(nil, error)
                     return
                 }
-
                 completion(data, nil)
             }
         }
