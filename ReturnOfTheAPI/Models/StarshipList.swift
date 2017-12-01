@@ -8,9 +8,9 @@
 
 import Foundation
 
-class StarshipList: Decodable {
+struct StarshipList: Decodable {
     let count: Int
-    let paginationURL: String
+    let paginationURL: String?
     let results: [Starship]
 
     enum CodingKeys: String, CodingKey {
