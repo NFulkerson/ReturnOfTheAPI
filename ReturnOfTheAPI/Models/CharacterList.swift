@@ -8,10 +8,10 @@
 
 import Foundation
 
-class CharacterList: Decodable {
-    let count: Int
-    let paginationURL: String
-    let results: [Character]
+struct CharacterList: Decodable {
+    var count: Int
+    var paginationURL: String?
+    var results: [Character]
 
     enum CodingKeys: String, CodingKey {
         case count
