@@ -14,8 +14,7 @@
 		D825247A1FC55B710036E697 /* SwapiRealmOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524771FC55B710036E697 /* SwapiRealmOperation.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
-		D8732AA91FB1931D00769FAD /* StarshipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AA81FB1931D00769FAD /* StarshipList.swift */; };
-		D8732AAB1FB1934300769FAD /* VehicleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AAA1FB1934300769FAD /* VehicleList.swift */; };
+		D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AAA1FB1934300769FAD /* ResourceList.swift */; };
 		D8732ABC1FB35E2D00769FAD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8732ABA1FB35E2A00769FAD /* RealmSwift.framework */; };
 		D8732ABD1FB35E2D00769FAD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8732ABA1FB35E2A00769FAD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8732ABE1FB35E2D00769FAD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8732ABB1FB35E2C00769FAD /* Realm.framework */; };
@@ -36,7 +35,6 @@
 		D882D3BA1FA9C18300FF8D0A /* SampleCharacter.plist in Resources */ = {isa = PBXBuildFile; fileRef = D882D3B91FA9C18300FF8D0A /* SampleCharacter.plist */; };
 		D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */; };
 		D89EABBF1FAB810E00F13C04 /* QueryItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABBE1FAB810E00F13C04 /* QueryItemProvider.swift */; };
-		D89EABC11FAB934800F13C04 /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABC01FAB934800F13C04 /* CharacterList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,8 +60,7 @@
 		D82524771FC55B710036E697 /* SwapiRealmOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiRealmOperation.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
-		D8732AA81FB1931D00769FAD /* StarshipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipList.swift; sourceTree = "<group>"; };
-		D8732AAA1FB1934300769FAD /* VehicleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleList.swift; sourceTree = "<group>"; };
+		D8732AAA1FB1934300769FAD /* ResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceList.swift; sourceTree = "<group>"; };
 		D8732ABA1FB35E2A00769FAD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D8732ABB1FB35E2C00769FAD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D8732AC11FB4380D00769FAD /* PaginatedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResult.swift; sourceTree = "<group>"; };
@@ -84,7 +81,6 @@
 		D882D3B91FA9C18300FF8D0A /* SampleCharacter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = SampleCharacter.plist; path = ReturnOfTheAPI/SampleCharacter.plist; sourceTree = SOURCE_ROOT; };
 		D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIClient.swift; sourceTree = "<group>"; };
 		D89EABBE1FAB810E00F13C04 /* QueryItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemProvider.swift; sourceTree = "<group>"; };
-		D89EABC01FAB934800F13C04 /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,9 +187,7 @@
 				D882D3AE1FA2D23500FF8D0A /* Film.swift */,
 				D882D3B01FA2D2E800FF8D0A /* Planet.swift */,
 				D882D3B21FA339E800FF8D0A /* Species.swift */,
-				D89EABC01FAB934800F13C04 /* CharacterList.swift */,
-				D8732AA81FB1931D00769FAD /* StarshipList.swift */,
-				D8732AAA1FB1934300769FAD /* VehicleList.swift */,
+				D8732AAA1FB1934300769FAD /* ResourceList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,17 +300,15 @@
 				D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */,
 				D882D3AF1FA2D23500FF8D0A /* Film.swift in Sources */,
 				D8142C431FA9D93100305587 /* SwapiError.swift in Sources */,
-				D8732AA91FB1931D00769FAD /* StarshipList.swift in Sources */,
 				D825247A1FC55B710036E697 /* SwapiRealmOperation.swift in Sources */,
 				D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */,
 				D882D3921FA2BE9800FF8D0A /* ViewController.swift in Sources */,
 				D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,
-				D8732AAB1FB1934300769FAD /* VehicleList.swift in Sources */,
+				D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */,
 				D882D3B31FA339E800FF8D0A /* Species.swift in Sources */,
 				D882D3B11FA2D2E800FF8D0A /* Planet.swift in Sources */,
 				D8732AC21FB4380D00769FAD /* PaginatedResult.swift in Sources */,
-				D89EABC11FAB934800F13C04 /* CharacterList.swift in Sources */,
 				D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */,
 				D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */,
 				D882D3AD1FA2D12C00FF8D0A /* Vehicle.swift in Sources */,

@@ -51,7 +51,7 @@ enum SwapiResource: String {
     case planet = "/api/planets/"
     case species = "/api/species/"
 
-    var model: Object.Type {
+    var model: AnyObject.Type {
         switch self {
         case .character:
             return Character.self

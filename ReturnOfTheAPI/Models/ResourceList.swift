@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct VehicleList: Decodable {
+struct ResourceList: Decodable {
     let count: Int
     let paginationURL: String?
-    let results: [Vehicle]
+    let results: Data
 
     enum CodingKeys: String, CodingKey {
         case count
