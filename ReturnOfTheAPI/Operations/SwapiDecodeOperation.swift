@@ -32,12 +32,11 @@ class SwapiDecodeOperation: Operation {
             print("Canceled")
             return
         }
-        let decoder = JSONDecoder()
-
+        
         do {
             var list: ResourceList
             let realm = try Realm()
-            list = try decoder.decode(ResourceList.self, from: data)
+            list = try ResourceList(from: swapiResourceType, data: data)
 
             if let url = list.paginationURL {
                 resourceHasMorePages = true
@@ -46,38 +45,24 @@ class SwapiDecodeOperation: Operation {
             } else {
                 print("Finished paging data!")
             }
+
             switch swapiResourceType {
             case .character:
-                let decodedObjects = try decoder.decode([Character].self, from: list.results)
-                try? realm.write {
-                    realm.add(decodedObjects, update: true)
-                }
+                let results = list.results as! [Character]
             case .film:
-                let decodedObjects = try decoder.decode([Film].self, from: list.results)
-                try? realm.write {
-                    realm.add(decodedObjects, update: true)
-                }
+                let results = list.results as! [Film]
             case .planet:
-                let decodedObjects = try decoder.decode([Planet].self, from: list.results)
-                try? realm.write {
-                    realm.add(decodedObjects, update: true)
-                }
+                let results = list.results as! [Planet]
             case .species:
-                let decodedObjects = try decoder.decode([Species].self, from: list.results)
-                try? realm.write {
-                    realm.add(decodedObjects, update: true)
-                }
+                let results = list.results as! [Species]
             case .starship:
-                let decodedObjects = try decoder.decode([Starship].self, from: list.results)
-                try? realm.write {
-                    realm.add(decodedObjects, update: true)
-                }
+                let results = list.results as! [Starship]
             case .vehicle:
-                let decodedObjects = try decoder.decode([Vehicle].self, from: list.results)
-                try? realm.write {
-                    realm.add(decodedObjects, update: true)
-                }
+                let results = list.results as! [Vehicle]
+
             }
+
+
 
         } catch {
             print(error)
