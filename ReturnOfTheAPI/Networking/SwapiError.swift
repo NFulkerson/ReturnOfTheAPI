@@ -12,6 +12,6 @@ enum SwapiError: Error {
     case requestFailed
     case responseUnsuccessful
     case networkInterruption
-    case invalidData
+    case invalidData(message: String)
     case decodingFailed(message: String)
 }
