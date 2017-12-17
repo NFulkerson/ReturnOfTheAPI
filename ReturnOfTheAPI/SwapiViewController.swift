@@ -14,10 +14,11 @@ class SwapiViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var itemPicker: UIPickerView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bornLabel: UILabel!
+    @IBOutlet weak var homeworldLabel: UILabel!
 
     fileprivate var notificationToken: NotificationToken?
 
-    var items: Results<Starship>?
+    var items: Results<Character>?
     let client: SwapiClient = SwapiClient()
 
     override func viewDidLoad() {
@@ -27,12 +28,11 @@ class SwapiViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         itemPicker.backgroundColor = .black
 
         nameLabel.textColor = UIColor.CustomColor.swYellow
-
-        client.retrieveResources(for: .starship)
-
+        retrieveAllSwapiResources()
+        
         do {
             let realm = try Realm()
-            items = realm.objects(Starship.self).sorted(byKeyPath: "name", ascending: true)
+            items = realm.objects(Character.self).sorted(byKeyPath: "name", ascending: true)
 
         } catch {
             print(error)
@@ -88,7 +88,19 @@ class SwapiViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             return
         }
         nameLabel.text = items[row].name
-        bornLabel.text = items[row].manufacturer
+        bornLabel.text = items[row].birthYear
+        if let world = items[row].homeworld {
+            homeworldLabel.text = world.name
+        }
+    }
+
+    private func retrieveAllSwapiResources() {
+        client.retrieveResources(for: .character)
+        client.retrieveResources(for: .film)
+        client.retrieveResources(for: .planet)
+        client.retrieveResources(for: .species)
+        client.retrieveResources(for: .vehicle)
+        client.retrieveResources(for: .starship)
     }
 
 }
