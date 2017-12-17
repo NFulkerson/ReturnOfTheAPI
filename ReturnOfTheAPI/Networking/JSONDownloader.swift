@@ -34,7 +34,7 @@ class JSONDownloader {
                 if let data = data {
                     completion(data, nil)
                 } else {
-                    completion(nil, .invalidData)
+                    completion(nil, .invalidData(message: "Data is missing or invalid."))
                     print(error as Any)
                 }
             } else {
