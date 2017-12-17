@@ -15,13 +15,8 @@ final class Species: RealmSwift.Object, Codable {
     @objc dynamic var designation: String = ""
     @objc dynamic var averageHeight: String = ""
     @objc dynamic var averageLifespan: String = ""
-    @objc dynamic var eyeColors: String = ""
-    @objc dynamic var hairColors: String = ""
-    @objc dynamic var skinColors: String = ""
     @objc dynamic var language: String = ""
-//    let homeworld: Planet
-//    let people: [Character]
-//    let films: [Film]
+    @objc dynamic var url: String = ""
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -29,13 +24,12 @@ final class Species: RealmSwift.Object, Codable {
         case designation
         case averageHeight = "average_height"
         case averageLifespan = "average_lifespan"
-        case eyeColors = "eye_colors"
-        case hairColors = "hair_colors"
-        case skinColors = "skin_colors"
         case language
-//        case homeworld
-//        case people
-//        case films
+        case url
+    }
+
+    override static func primaryKey() -> String? {
+        return "url"
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -46,9 +40,7 @@ final class Species: RealmSwift.Object, Codable {
         designation = try container.decode(String.self, forKey: .designation)
         averageHeight = try container.decode(String.self, forKey: .averageHeight)
         averageLifespan = try container.decode(String.self, forKey: .averageLifespan)
-        eyeColors = try container.decode(String.self, forKey: .eyeColors)
-        hairColors = try container.decode(String.self, forKey: .hairColors)
-        skinColors = try container.decode(String.self, forKey: .skinColors)
         language = try container.decode(String.self, forKey: .language)
+        url = try container.decode(String.self, forKey: .url)
     }
 }

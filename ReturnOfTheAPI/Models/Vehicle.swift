@@ -21,11 +21,10 @@ final class Vehicle: RealmSwift.Object, Codable {
     @objc dynamic var maxAtmosphereSpeed: String = ""
     @objc dynamic var cargoCapacity: String = ""
     @objc dynamic var consumables: String = ""
-//    let films: [Film]
-//    let pilots: [Character]
+    @objc dynamic var url: String = ""
 
     override static func primaryKey() -> String? {
-        return "name"
+        return "url"
     }
 
     enum CodingKeys: String, CodingKey {
@@ -40,8 +39,7 @@ final class Vehicle: RealmSwift.Object, Codable {
         case maxAtmosphereSpeed = "max_atmosphering_speed"
         case cargoCapacity = "cargo_capacity"
         case consumables
-//        case films
-//        case pilots
+        case url
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -58,5 +56,6 @@ final class Vehicle: RealmSwift.Object, Codable {
         maxAtmosphereSpeed = try container.decode(String.self, forKey: .maxAtmosphereSpeed)
         cargoCapacity = try container.decode(String.self, forKey: .cargoCapacity)
         consumables = try container.decode(String.self, forKey: .consumables)
+        url = try container.decode(String.self, forKey: .url)
     }
 }

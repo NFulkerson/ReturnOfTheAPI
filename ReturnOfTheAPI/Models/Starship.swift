@@ -25,9 +25,10 @@ final class Starship: RealmSwift.Object, Codable {
     @objc dynamic var consumables: String = ""
 //    let films: [Film]
 //    let pilots: [Character]
+    @objc dynamic var url: String = ""
 
     override static func primaryKey() -> String? {
-        return "name"
+        return "url"
     }
 
     enum CodingKeys: String, CodingKey {
@@ -46,6 +47,7 @@ final class Starship: RealmSwift.Object, Codable {
         case consumables = "consumables"
 //        case films
 //        case pilots
+        case url
     }
 
     required convenience init(from decoder: Decoder) throws {

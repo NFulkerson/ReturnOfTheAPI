@@ -12,28 +12,18 @@ import RealmSwift
 final class Film: RealmSwift.Object, Codable {
     @objc dynamic var title: String = ""
     @objc dynamic var episodeId: String = ""
-    @objc dynamic var openingCrawl: String = ""
-    @objc dynamic var director: String = ""
-    @objc dynamic var producer: String = ""
     @objc dynamic var releaseDate: String = ""
-    //let characters: [Character]
-    //let planets: [Planet]
-    //let starships: [Starship]
-    //let vehicles: [Vehicle]
-    //let species: [Species]
+    @objc dynamic var url: String = ""
 
     enum CodingKeys: String, CodingKey {
         case title
         case episodeId = "episode_id"
-        case openingCrawl = "opening_crawl"
-        case director
-        case producer
         case releaseDate = "release_date"
-        //case characters
-        //case planets
-        //case starships
-        //case vehicles
-        //case species
+        case url
+    }
+
+    override static func primaryKey() -> String? {
+        return "url"
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -41,9 +31,7 @@ final class Film: RealmSwift.Object, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
         episodeId = try container.decode(String.self, forKey: .episodeId)
-        openingCrawl = try container.decode(String.self, forKey: .openingCrawl)
-        director = try container.decode(String.self, forKey: .director)
-        producer = try container.decode(String.self, forKey: .producer)
         releaseDate = try container.decode(String.self, forKey: .releaseDate)
+        url = try container.decode(String.self, forKey: .url)
     }
 }
