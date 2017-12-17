@@ -17,6 +17,7 @@ class SwapiDecodeOperation: Operation {
 
     init(for swapiResource: SwapiResource) {
         print("Initializing operation")
+        print("Swapi Resource is \(swapiResource)\nSetting resource type")
         self.swapiResourceType = swapiResource
     }
 
@@ -32,37 +33,36 @@ class SwapiDecodeOperation: Operation {
             print("Canceled")
             return
         }
-        
+
         do {
-            var list: ResourceList
             let realm = try Realm()
-            list = try ResourceList(from: swapiResourceType, data: data)
-
-            if let url = list.paginationURL {
-                resourceHasMorePages = true
-                nextUrl = url
-                print("Next url is: \(nextUrl)")
-            } else {
-                print("Finished paging data!")
-            }
-
+            let decoder = JSONDecoder()
             switch swapiResourceType {
             case .character:
-                let results = list.results as! [Character]
+                let list = try decoder.decode(ResourceList<Character>.self, from: data)
+                checkForMoreResources(in: list)
+                write(results: list.results, to: realm)
             case .film:
-                let results = list.results as! [Film]
+                let list = try decoder.decode(ResourceList<Film>.self, from: data)
+                checkForMoreResources(in: list)
+                write(results: list.results, to: realm)
             case .planet:
-                let results = list.results as! [Planet]
+                let list = try decoder.decode(ResourceList<Planet>.self, from: data)
+                checkForMoreResources(in: list)
+                write(results: list.results, to: realm)
             case .species:
-                let results = list.results as! [Species]
+                let list = try decoder.decode(ResourceList<Species>.self, from: data)
+                checkForMoreResources(in: list)
+                write(results: list.results, to: realm)
             case .starship:
-                let results = list.results as! [Starship]
+                let list = try decoder.decode(ResourceList<Starship>.self, from: data)
+                checkForMoreResources(in: list)
+                write(results: list.results, to: realm)
             case .vehicle:
-                let results = list.results as! [Vehicle]
-
+                let list = try decoder.decode(ResourceList<Vehicle>.self, from: data)
+                checkForMoreResources(in: list)
+                write(results: list.results, to: realm)
             }
-
-
 
         } catch {
             print(error)
@@ -70,4 +70,23 @@ class SwapiDecodeOperation: Operation {
         print("Finished decode operation")
     }
 
+    private func checkForMoreResources<T>(in list: ResourceList<T>) {
+        if let url = list.paginationURL {
+            resourceHasMorePages = true
+            nextUrl = url
+            print("Next url is: \(nextUrl)")
+        } else {
+            print("Finished paging data!")
+        }
+    }
+
+    private func write<T>(results:[T], to realm: Realm) where T: Object {
+        do {
+            try realm.write {
+                realm.add(results, update: true)
+            }
+        } catch {
+            print(error)
+        }
+    }
 }

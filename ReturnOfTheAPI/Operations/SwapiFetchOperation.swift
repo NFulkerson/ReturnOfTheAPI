@@ -19,10 +19,15 @@ class SwapiFetchOperation: Operation {
 
     override func main() {
         do {
+            if self.isCancelled {
+                print("Canceled fetch operation.")
+                return
+            }
+            print("Fetching data from \(endpoint.url)")
             data = try Data(contentsOf: endpoint.url)
             print("we have data~!")
         } catch {
-            self.error = SwapiError.invalidData
+            self.error = SwapiError.invalidData(message: "Data is missing or invalid.")
         }
 
         print("Finished execution of fetch operation")
