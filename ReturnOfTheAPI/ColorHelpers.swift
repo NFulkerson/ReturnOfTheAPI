@@ -23,6 +23,6 @@ extension UIColor {
     struct CustomColor {
         // for poor souls like me who don't consistently use a particular spelling of gray.
         static let swYellow = UIColor(netHex: 0xFFD700)
-
+        static let swBlue = UIColor(netHex: 0x7ACEFF)
     }
 }
