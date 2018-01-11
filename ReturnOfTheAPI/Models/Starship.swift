@@ -66,5 +66,6 @@ final class Starship: RealmSwift.Object, Codable {
         mglt = try container.decode(String.self, forKey: .mglt)
         cargoCapacity = try container.decode(String.self, forKey: .cargoCapacity)
         consumables = try container.decode(String.self, forKey: .consumables)
+        url = try container.decode(String.self, forKey: .url)
     }
 }
