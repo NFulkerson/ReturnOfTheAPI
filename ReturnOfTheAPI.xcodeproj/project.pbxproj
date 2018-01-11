@@ -12,6 +12,7 @@
 		D8197DFC1FE648A700747665 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8197DFB1FE648A600747665 /* LoadingViewController.swift */; };
 		D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */; };
 		D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524761FC55B710036E697 /* SwapiFetchOperation.swift */; };
+		D85BDD311FFE3F8C00693221 /* BasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
 		D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AAA1FB1934300769FAD /* ResourceList.swift */; };
@@ -20,7 +21,7 @@
 		D8732ABE1FB35E2D00769FAD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8732ABB1FB35E2C00769FAD /* Realm.framework */; };
 		D8732ABF1FB35E2D00769FAD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8732ABB1FB35E2C00769FAD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D38F1FA2BE9800FF8D0A /* AppDelegate.swift */; };
-		D882D3921FA2BE9800FF8D0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3911FA2BE9800FF8D0A /* ViewController.swift */; };
+		D882D3921FA2BE9800FF8D0A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3911FA2BE9800FF8D0A /* MenuViewController.swift */; };
 		D882D3951FA2BE9800FF8D0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D882D3931FA2BE9800FF8D0A /* Main.storyboard */; };
 		D882D3971FA2BE9800FF8D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D882D3961FA2BE9800FF8D0A /* Assets.xcassets */; };
 		D882D39A1FA2BE9800FF8D0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D882D3981FA2BE9800FF8D0A /* LaunchScreen.storyboard */; };
@@ -32,6 +33,8 @@
 		D882D3B31FA339E800FF8D0A /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B21FA339E800FF8D0A /* Species.swift */; };
 		D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */; };
 		D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */; };
+		D8C417451FFE08A900619913 /* SWTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C417441FFE08A900619913 /* SWTableViewController.swift */; };
+		D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +58,7 @@
 		D8197DFB1FE648A600747665 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiDecodeOperation.swift; sourceTree = "<group>"; };
 		D82524761FC55B710036E697 /* SwapiFetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiFetchOperation.swift; sourceTree = "<group>"; };
+		D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
 		D8732AAA1FB1934300769FAD /* ResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceList.swift; sourceTree = "<group>"; };
@@ -62,7 +66,7 @@
 		D8732ABB1FB35E2C00769FAD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D882D38C1FA2BE9800FF8D0A /* ReturnOfTheAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReturnOfTheAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D882D38F1FA2BE9800FF8D0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D882D3911FA2BE9800FF8D0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D882D3911FA2BE9800FF8D0A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D882D3941FA2BE9800FF8D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D882D3961FA2BE9800FF8D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D882D3991FA2BE9800FF8D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 		D882D3B21FA339E800FF8D0A /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
 		D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIClient.swift; sourceTree = "<group>"; };
+		D8C417441FFE08A900619913 /* SWTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTableViewController.swift; sourceTree = "<group>"; };
+		D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D80214A11FE8F06A00DAA8BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D82524741FC55B710036E697 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +134,7 @@
 		D882D38E1FA2BE9800FF8D0A /* ReturnOfTheAPI */ = {
 			isa = PBXGroup;
 			children = (
+				D80214A11FE8F06A00DAA8BE /* Helpers */,
 				D82524741FC55B710036E697 /* Operations */,
 				D882D3A41FA2C90900FF8D0A /* Controllers */,
 				D882D3A61FA2C92300FF8D0A /* Models */,
@@ -127,14 +142,10 @@
 				D882D3A51FA2C91500FF8D0A /* Views */,
 				D882D3A21FA2C8F100FF8D0A /* View Models */,
 				D882D38F1FA2BE9800FF8D0A /* AppDelegate.swift */,
-				D882D3911FA2BE9800FF8D0A /* ViewController.swift */,
-				D85CF7231FBC226300CA7289 /* SwapiViewController.swift */,
 				D882D3931FA2BE9800FF8D0A /* Main.storyboard */,
-				D8197DFB1FE648A600747665 /* LoadingViewController.swift */,
 				D882D3961FA2BE9800FF8D0A /* Assets.xcassets */,
 				D882D3981FA2BE9800FF8D0A /* LaunchScreen.storyboard */,
 				D882D39B1FA2BE9800FF8D0A /* Info.plist */,
-				D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */,
 			);
 			path = ReturnOfTheAPI;
 			sourceTree = "<group>";
@@ -152,6 +163,7 @@
 		D882D3A21FA2C8F100FF8D0A /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -159,6 +171,11 @@
 		D882D3A41FA2C90900FF8D0A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D882D3911FA2BE9800FF8D0A /* MenuViewController.swift */,
+				D85CF7231FBC226300CA7289 /* SwapiViewController.swift */,
+				D8C417441FFE08A900619913 /* SWTableViewController.swift */,
+				D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */,
+				D8197DFB1FE648A600747665 /* LoadingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,15 +304,18 @@
 				D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */,
 				D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */,
 				D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */,
+				D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */,
 				D882D3AF1FA2D23500FF8D0A /* Film.swift in Sources */,
 				D8142C431FA9D93100305587 /* SwapiError.swift in Sources */,
 				D8197DFC1FE648A700747665 /* LoadingViewController.swift in Sources */,
 				D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */,
-				D882D3921FA2BE9800FF8D0A /* ViewController.swift in Sources */,
+				D882D3921FA2BE9800FF8D0A /* MenuViewController.swift in Sources */,
 				D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,
 				D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */,
+				D8C417451FFE08A900619913 /* SWTableViewController.swift in Sources */,
 				D882D3B31FA339E800FF8D0A /* Species.swift in Sources */,
+				D85BDD311FFE3F8C00693221 /* BasicInfoTableViewController.swift in Sources */,
 				D882D3B11FA2D2E800FF8D0A /* Planet.swift in Sources */,
 				D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */,
 				D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */,

@@ -41,6 +41,7 @@ class SwapiDecodeOperation: Operation {
             case .character:
                 let list = try decoder.decode(ResourceList<Character>.self, from: data)
                 checkForMoreResources(in: list)
+                print("Writing \(list.results.count) characters to realm.")
                 write(results: list.results, to: realm)
             case .film:
                 let list = try decoder.decode(ResourceList<Film>.self, from: data)
