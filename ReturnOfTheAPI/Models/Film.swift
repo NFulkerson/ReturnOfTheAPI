@@ -11,7 +11,7 @@ import RealmSwift
 
 final class Film: RealmSwift.Object, Codable {
     @objc dynamic var title: String = ""
-    @objc dynamic var episodeId: String = ""
+    @objc dynamic var episodeId: Int = 0
     @objc dynamic var releaseDate: String = ""
     @objc dynamic var url: String = ""
 
@@ -30,7 +30,7 @@ final class Film: RealmSwift.Object, Codable {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
-        episodeId = try container.decode(String.self, forKey: .episodeId)
+        episodeId = try container.decode(Int.self, forKey: .episodeId)
         releaseDate = try container.decode(String.self, forKey: .releaseDate)
         url = try container.decode(String.self, forKey: .url)
     }
