@@ -40,9 +40,13 @@ class SwapiClient {
         adapter.addDependency(fetch)
         decode.addDependency(adapter)
 
-        decode.completionBlock = { [unowned decode, unowned self] in
+        decode.completionBlock = { [unowned decode, weak self] in
             if decode.resourceHasMorePages {
-                self.retrieveResource(with: decode.nextUrl)
+                if let weakSelf = self {
+                    weakSelf.retrieveResource(with: decode.nextUrl)
+                } else {
+                    print("We seem to have lost a reference")
+                }
             }
         }
 
