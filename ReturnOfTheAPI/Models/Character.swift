@@ -66,8 +66,10 @@ final class Character: RealmSwift.Object, Decodable {
             if let film = realm.object(ofType: Film.self, forPrimaryKey: urlString) {
                 filmsFound.append(film)
             }
+
         }
-        return filmsFound
+        let sortedFilms = filmsFound.sorted(by: {$0.episodeId < $1.episodeId})
+        return sortedFilms
     }
 
     var vehicles: [Vehicle] {
