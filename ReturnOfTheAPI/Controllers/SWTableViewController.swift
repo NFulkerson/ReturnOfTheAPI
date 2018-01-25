@@ -10,6 +10,10 @@ import UIKit
 import RealmSwift
 
 class SWTableViewController: UITableViewController {
+
+    @IBOutlet weak var shortLabel: UILabel!
+    @IBOutlet weak var tallLabel: UILabel!
+
     private var basicInfoTable: UITableViewController?
     var character: Character? {
         didSet {
@@ -24,13 +28,18 @@ class SWTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let segmentControl = UISegmentedControl(items: ["Imperial", "Metric"])
+        let barButtonItem = UIBarButtonItem(customView: segmentControl)
+        navigationItem.rightBarButtonItem = barButtonItem
         tableView.backgroundColor = .black
         tableView.dataSource = dataSource
         tableView.delegate = self
+        shortLabel.text = SwapiClient.smallest(.character)
+        tallLabel.text = SwapiClient.largest(.character)
+
+//        self.tableView.tableHeaderView?.layoutIfNeeded()
 
         if basicInfoTable != nil && character != nil {
-            print(character)
             let infoTable = basicInfoTable as? BasicInfoTableViewController
             infoTable?.setupLabels(for: character!)
         }

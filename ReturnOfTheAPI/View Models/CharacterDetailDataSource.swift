@@ -16,6 +16,11 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource {
         super.init()
     }
 
+    init(with character: Character) {
+        super.init()
+        self.character = character
+    }
+
     func update(with character: Character) {
         self.character = character
     }
@@ -27,6 +32,7 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+
         case 0:
             return character?.films.count ?? 0
         case 1:
@@ -40,6 +46,7 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
+
         case 0:
             return "Appears In"
         case 1:

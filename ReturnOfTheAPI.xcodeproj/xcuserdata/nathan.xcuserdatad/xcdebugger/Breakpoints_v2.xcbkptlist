@@ -9,14 +9,76 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ReturnOfTheAPI/View Models/CharacterDetailDataSource.swift"
-            timestampString = "537285900.914323"
+            filePath = "ReturnOfTheAPI/Controllers/SwapiViewController.swift"
+            timestampString = "538597765.165171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "numberOfSections(in:)"
-            landmarkType = "7">
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "SwapiViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReturnOfTheAPI.SwapiViewController.listTableView.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITableView&gt;"
+                  moduleName = "ReturnOfTheAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nathan/Developer/ReturnOfTheAPI/ReturnOfTheAPI/Controllers/SwapiViewController.swift"
+                  timestampString = "538597680.055921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "79">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReturnOfTheAPI.SwapiViewController.listTableView.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITableView&gt;"
+                  moduleName = "ReturnOfTheAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nathan/Developer/ReturnOfTheAPI/ReturnOfTheAPI/Controllers/SwapiViewController.swift"
+                  timestampString = "538597680.061272"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReturnOfTheAPI.SwapiViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ReturnOfTheAPI.SwapiViewController"
+                  moduleName = "ReturnOfTheAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nathan/Developer/ReturnOfTheAPI/ReturnOfTheAPI/Controllers/SwapiViewController.swift"
+                  timestampString = "538597680.0641609"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "79">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReturnOfTheAPI.SwapiViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;ReturnOfTheAPI.SwapiViewController&gt;"
+                  moduleName = "ReturnOfTheAPI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nathan/Developer/ReturnOfTheAPI/ReturnOfTheAPI/Controllers/SwapiViewController.swift"
+                  timestampString = "538597680.066624"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -95,13 +95,14 @@ class SwapiViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // - MARK: SWAPI data methods
 
     private func retrieveAllSwapiResources() {
-        // - TODO: These calls need to be performed async as they slow down the main thread
-        client.retrieveResources(for: .character)
-        client.retrieveResources(for: .film)
-        client.retrieveResources(for: .planet)
-        client.retrieveResources(for: .species)
-        client.retrieveResources(for: .vehicle)
-        client.retrieveResources(for: .starship)
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            self?.client.retrieveResources(for: .character)
+            self?.client.retrieveResources(for: .film)
+            self?.client.retrieveResources(for: .planet)
+            self?.client.retrieveResources(for: .species)
+            self?.client.retrieveResources(for: .vehicle)
+            self?.client.retrieveResources(for: .starship)
+        }
     }
 
     private func configure(_ cell: UITableViewCell) {

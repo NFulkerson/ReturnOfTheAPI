@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8142C401FA9D86000305587 /* JSONDownloader.swift */; };
 		D8142C431FA9D93100305587 /* SwapiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8142C421FA9D93100305587 /* SwapiError.swift */; };
-		D8197DFC1FE648A700747665 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8197DFB1FE648A600747665 /* LoadingViewController.swift */; };
 		D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */; };
 		D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524761FC55B710036E697 /* SwapiFetchOperation.swift */; };
+		D859F6CF20164E3E0060DBE4 /* MeasureConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D859F6CE20164E3E0060DBE4 /* MeasureConverter.swift */; };
 		D85BDD311FFE3F8C00693221 /* BasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
@@ -33,6 +33,9 @@
 		D882D3B31FA339E800FF8D0A /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B21FA339E800FF8D0A /* Species.swift */; };
 		D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */; };
 		D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */; };
+		D8AD3C6F2019B3C300B9A231 /* ResourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD3C6E2019B3C300B9A231 /* ResourceProtocol.swift */; };
+		D8AD3C712019B8AE00B9A231 /* ResultLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD3C702019B8AE00B9A231 /* ResultLists.swift */; };
+		D8AD3C73201A4A7800B9A231 /* ResourceTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD3C72201A4A7800B9A231 /* ResourceTableController.swift */; };
 		D8C417451FFE08A900619913 /* SWTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C417441FFE08A900619913 /* SWTableViewController.swift */; };
 		D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */; };
 /* End PBXBuildFile section */
@@ -55,9 +58,9 @@
 /* Begin PBXFileReference section */
 		D8142C401FA9D86000305587 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		D8142C421FA9D93100305587 /* SwapiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiError.swift; sourceTree = "<group>"; };
-		D8197DFB1FE648A600747665 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiDecodeOperation.swift; sourceTree = "<group>"; };
 		D82524761FC55B710036E697 /* SwapiFetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiFetchOperation.swift; sourceTree = "<group>"; };
+		D859F6CE20164E3E0060DBE4 /* MeasureConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureConverter.swift; sourceTree = "<group>"; };
 		D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
@@ -79,6 +82,9 @@
 		D882D3B21FA339E800FF8D0A /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
 		D882D3B41FA8EF1000FF8D0A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIClient.swift; sourceTree = "<group>"; };
+		D8AD3C6E2019B3C300B9A231 /* ResourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProtocol.swift; sourceTree = "<group>"; };
+		D8AD3C702019B8AE00B9A231 /* ResultLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLists.swift; sourceTree = "<group>"; };
+		D8AD3C72201A4A7800B9A231 /* ResourceTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTableController.swift; sourceTree = "<group>"; };
 		D8C417441FFE08A900619913 /* SWTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTableViewController.swift; sourceTree = "<group>"; };
 		D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +105,7 @@
 		D80214A11FE8F06A00DAA8BE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D859F6CE20164E3E0060DBE4 /* MeasureConverter.swift */,
 				D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */,
 			);
 			path = Helpers;
@@ -173,9 +180,9 @@
 			children = (
 				D882D3911FA2BE9800FF8D0A /* MenuViewController.swift */,
 				D85CF7231FBC226300CA7289 /* SwapiViewController.swift */,
+				D8AD3C72201A4A7800B9A231 /* ResourceTableController.swift */,
 				D8C417441FFE08A900619913 /* SWTableViewController.swift */,
 				D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */,
-				D8197DFB1FE648A600747665 /* LoadingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -198,6 +205,8 @@
 				D882D3B01FA2D2E800FF8D0A /* Planet.swift */,
 				D882D3B21FA339E800FF8D0A /* Species.swift */,
 				D8732AAA1FB1934300769FAD /* ResourceList.swift */,
+				D8AD3C6E2019B3C300B9A231 /* ResourceProtocol.swift */,
+				D8AD3C702019B8AE00B9A231 /* ResultLists.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,13 +311,16 @@
 			files = (
 				D882D3A91FA2D10700FF8D0A /* Character.swift in Sources */,
 				D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */,
+				D8AD3C6F2019B3C300B9A231 /* ResourceProtocol.swift in Sources */,
+				D859F6CF20164E3E0060DBE4 /* MeasureConverter.swift in Sources */,
+				D8AD3C73201A4A7800B9A231 /* ResourceTableController.swift in Sources */,
 				D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */,
 				D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */,
 				D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */,
 				D882D3AF1FA2D23500FF8D0A /* Film.swift in Sources */,
 				D8142C431FA9D93100305587 /* SwapiError.swift in Sources */,
-				D8197DFC1FE648A700747665 /* LoadingViewController.swift in Sources */,
 				D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */,
+				D8AD3C712019B8AE00B9A231 /* ResultLists.swift in Sources */,
 				D882D3921FA2BE9800FF8D0A /* MenuViewController.swift in Sources */,
 				D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,

@@ -9,14 +9,14 @@
 import Foundation
 import RealmSwift
 
-final class Character: RealmSwift.Object, Decodable {
+final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
     @objc dynamic var birthYear: String = ""
     @objc dynamic var eyeColor: String = ""
     @objc dynamic var gender: String = ""
     @objc dynamic var hairColor: String = ""
-    @objc dynamic var height: String = ""
+    @objc dynamic var height: Int = 0
     @objc dynamic var homeworldURL: String = ""
-    @objc dynamic var mass: String = ""
+    @objc dynamic var mass: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var skinColor: String = ""
     var filmsURL: [String] = []
@@ -114,11 +114,25 @@ final class Character: RealmSwift.Object, Decodable {
         filmsURL = try container.decode([String].self, forKey: .filmsURL)
         gender = try container.decode(String.self, forKey: .gender)
         hairColor = try container.decode(String.self, forKey: .hairColor)
-        height = try container.decode(String.self, forKey: .height)
+        let heightString = try container.decode(String.self, forKey: .height)
+        if heightString == "unknown" {
+            height = 0
+        } else if let numericHeight = Int(heightString) {
+            height = numericHeight
+        } else {
+            height = 0
+        }
         homeworldURL = try container.decode(String.self, forKey: .homeworld)
         starshipsURL = try container.decode([String].self, forKey: .starshipsURL)
         vehiclesURL = try container.decode([String].self, forKey: .vehiclesURL)
-        mass = try container.decode(String.self, forKey: .mass)
+        let massString = try container.decode(String.self, forKey: .mass)
+        if massString == "unknown" {
+            mass = 0
+        } else if let numericMass = Int(massString) {
+            mass = numericMass
+        } else {
+            mass = 0
+        }
         name = try container.decode(String.self, forKey: .name)
         skinColor = try container.decode(String.self, forKey: .skinColor)
         url = try container.decode(String.self, forKey: .url)

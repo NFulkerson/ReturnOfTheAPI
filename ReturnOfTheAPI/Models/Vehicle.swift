@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class Vehicle: RealmSwift.Object, Codable {
+final class Vehicle: RealmSwift.Object, Codable, ResourcePresentable {
     @objc dynamic var name: String = ""
     @objc dynamic var model: String = ""
     @objc dynamic var vehicleClass: String = ""

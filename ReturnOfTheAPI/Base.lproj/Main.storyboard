@@ -112,7 +112,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UEd-L3-9zi"/>
                     <connections>
-                        <outlet property="listTableView" destination="L6M-YE-csB" id="VHi-T6-nLG"/>
+                        <outlet property="listTableView" destination="L6M-YE-csB" id="BEE-pV-QDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfh-px-2lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
