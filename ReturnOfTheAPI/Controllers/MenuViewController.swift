@@ -34,9 +34,17 @@ class MenuViewController: UIViewController {
     }
 
     func setupButtons() {
+        let buttonFont = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
+        let swBlue = UIColor(named: "BlueAccent")
         characterButton.setImage(#imageLiteral(resourceName: "icon-characters"), for: .normal)
         starshipButton.setImage(#imageLiteral(resourceName: "icon-starships"), for: .normal)
         vehicleButton.setImage(#imageLiteral(resourceName: "icon-vehicles"), for: .normal)
+        characterButton.titleLabel?.font = buttonFont
+        starshipButton.titleLabel?.font = buttonFont
+        vehicleButton.titleLabel?.font = buttonFont
+        characterButton.setTitleColor(swBlue, for: .normal)
+        starshipButton.setTitleColor(swBlue, for: .normal)
+        vehicleButton.setTitleColor(swBlue, for: .normal)
         characterButton.setTitle("Characters", for: .normal)
         starshipButton.setTitle("Starships", for: .normal)
         vehicleButton.setTitle("Vehicles", for: .normal)
@@ -44,9 +52,14 @@ class MenuViewController: UIViewController {
         starshipButton.centerVertically()
         vehicleButton.centerVertically()
 
-        characterButton.addTarget(self, action: #selector(showResourceList), for: .touchUpInside)
-        starshipButton.addTarget(self, action: #selector(showResourceList), for: .touchUpInside)
-        vehicleButton.addTarget(self, action: #selector(showResourceList(sender:)), for: .touchUpInside)
+        characterButton.addTarget(self, action:
+            #selector(showResourceList(sender:)), for: .touchUpInside)
+
+        starshipButton.addTarget(self, action:
+            #selector(showResourceList(sender:)), for: .touchUpInside)
+
+        vehicleButton.addTarget(self, action:
+            #selector(showResourceList(sender:)), for: .touchUpInside)
     }
 
     @objc func showResourceList(sender: UIButton!) {
