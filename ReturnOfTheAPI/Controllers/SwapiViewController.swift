@@ -9,38 +9,51 @@
 import UIKit
 import RealmSwift
 
-class SwapiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var listTableView: UITableView!
+    var listTableView: UITableView = UITableView()
     fileprivate var notificationToken: NotificationToken?
 
-    var items: Results<Character>?
+    var resource: Resource
     let client: SwapiClient = SwapiClient()
+
+    init() {
+        self.resource = Resource()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) not implemented.")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(type(of: resource.items.first))
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.backgroundColor = .black
         // only should do this once, or if data is incomplete.
+        listTableView.register(UITableViewCell.self, forCellReuseIdentifier: "listCell")
         retrieveAllSwapiResources()
-
-        do {
-            let realm = try Realm()
-            items = realm.objects(Character.self).sorted(byKeyPath: "name", ascending: true)
-            let test = realm.objects(Character.self)
-            print(test)
-        } catch {
-            displayAlert(with: error.localizedDescription)
-        }
-
+        setupConstraints()
         setupNotificationToken()
 
     }
 
+    private func setupConstraints() {
+        view.addSubview(listTableView)
+        listTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            listTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            listTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            listTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+            ])
+    }
+
     private func setupNotificationToken() {
         if notificationToken == nil {
-            self.notificationToken = items?.observe { [weak self] (changes: RealmCollectionChange) in
+            self.notificationToken = resource.items.observe { [weak self] (changes: RealmCollectionChange) in
                 guard let table = self?.listTableView else {
                     return
                 }
@@ -58,22 +71,14 @@ class SwapiViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     // - MARK: Table View Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let items = items else {
-            return 0
-        }
-
-        return items.count
+        return resource.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
         configure(cell)
-        guard let items = items else {
-            cell.textLabel?.text = ""
-            return cell
-        }
 
-        cell.textLabel?.text = items[indexPath.row].name
+        cell.textLabel?.text = resource.items[indexPath.row].name
 
         return cell
     }
@@ -81,13 +86,13 @@ class SwapiViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showResourceDetailSegue" {
             if let indexPath = listTableView.indexPathForSelectedRow {
-                let character = items?[indexPath.row]
-                let detailController = segue.destination as? SWTableViewController
+                let item = resource.items[indexPath.row]
+                let detailController = segue.destination as? SWTableViewController<Character>
                 guard let detail = detailController else {
                     displayAlert(with: "Couldn't load details.")
                     return
                 }
-                detail.character = character
+//                detail.resource = item
             }
         }
     }

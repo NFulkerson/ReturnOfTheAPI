@@ -9,17 +9,17 @@
 import UIKit
 
 class BasicInfoTableViewController: UITableViewController {
-    @IBOutlet weak var bornLabel: UILabel!
-    @IBOutlet weak var homeworldLabel: UILabel!
-    @IBOutlet weak var heightLabel: UILabel!
-    @IBOutlet weak var weightLabel: UILabel!
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var hairColorLabel: UILabel!
-    @IBOutlet weak var eyeColorLabel: UILabel!
-    @IBOutlet weak var headerViewNameLabel: UILabel!
+    var bornLabel: UILabel!
+    var homeworldLabel: UILabel!
+    var heightLabel: UILabel!
+    var weightLabel: UILabel!
+    var genderLabel: UILabel!
+    var hairColorLabel: UILabel!
+    var eyeColorLabel: UILabel!
+    var headerViewNameLabel: UILabel!
 
-    @IBOutlet weak var heightCell: UITableViewCell!
-    @IBOutlet weak var weightCell: UITableViewCell!
+    var heightCell: UITableViewCell!
+    var weightCell: UITableViewCell!
 
     override func viewDidLoad() {
         super.viewDidLoad()
