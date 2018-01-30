@@ -19,3 +19,8 @@ protocol ResultPresentable {
 protocol ResourcePresentable {
     var name: String { get set }
 }
+
+protocol ResourceUpdatable {
+    associatedtype SwapiItem: Object, ResourcePresentable
+    func update(with item: SwapiItem)
+}
