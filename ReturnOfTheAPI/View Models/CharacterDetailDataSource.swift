@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterDetailDataSource: NSObject, UITableViewDataSource {
+class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdatable {
 
     private var character: Character?
 
@@ -21,8 +21,8 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource {
         self.character = character
     }
 
-    func update(with character: Character) {
-        self.character = character
+    func update(with item: Character) {
+        self.character = item
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
