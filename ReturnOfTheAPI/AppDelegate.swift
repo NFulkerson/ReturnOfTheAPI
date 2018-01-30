@@ -18,8 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
         UIApplication.shared.statusBarStyle = .lightContent
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+        let testView = MenuViewController()
+        let navigation = UINavigationController(rootViewController: testView)
+        navigation.navigationBar.barTintColor = .black
+        navigation.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.8429999948, blue: 0, alpha: 1)
+        let textAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1, green: 0.8429999948, blue: 0, alpha: 1)]
+        navigation.navigationBar.titleTextAttributes = textAttributes
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
 
         return true
     }
