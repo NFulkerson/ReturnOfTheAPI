@@ -51,6 +51,14 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
             ])
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = resource.items[indexPath.row]
+        print("Did Select Row at \(indexPath.row)")
+        print("Resource at index name: \(resource.items[indexPath.row])")
+        let detailController = SWTableViewController(with: item)
+        self.navigationController?.pushViewController(detailController, animated: true)
+    }
+
     private func setupNotificationToken() {
         if notificationToken == nil {
             self.notificationToken = resource.items.observe { [weak self] (changes: RealmCollectionChange) in
@@ -81,20 +89,6 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
         cell.textLabel?.text = resource.items[indexPath.row].name
 
         return cell
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showResourceDetailSegue" {
-            if let indexPath = listTableView.indexPathForSelectedRow {
-                let item = resource.items[indexPath.row]
-                let detailController = segue.destination as? SWTableViewController<Character>
-                guard let detail = detailController else {
-                    displayAlert(with: "Couldn't load details.")
-                    return
-                }
-//                detail.resource = item
-            }
-        }
     }
 
     // - MARK: SWAPI data methods
