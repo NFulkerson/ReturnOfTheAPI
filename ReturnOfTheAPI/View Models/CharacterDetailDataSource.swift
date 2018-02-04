@@ -10,15 +10,11 @@ import UIKit
 
 class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdatable {
 
-    private var character: Character?
-
-    override init() {
-        super.init()
-    }
+    private var character: Character
 
     init(with character: Character) {
-        super.init()
         self.character = character
+        super.init()
     }
 
     func update(with item: Character) {
@@ -26,19 +22,20 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
 
         case 0:
-            return character?.films.count ?? 0
+            return character.basicInfo.count
         case 1:
-            return character?.starships.count ?? 0
+            return character.films.count
         case 2:
-            return character?.vehicles.count ?? 0
+            return character.starships.count
+        case 3:
+            return character.vehicles.count
         default:
             return 0
         }
@@ -48,10 +45,12 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
         switch section {
 
         case 0:
-            return "Appears In"
+            return "Basic Info"
         case 1:
-            return "Starships"
+            return "Appears In"
         case 2:
+            return "Starships"
+        case 3:
             return "Vehicles"
         default:
             return nil
@@ -59,7 +58,7 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "swList", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "swDetail", for: indexPath)
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 0.8431372549, blue: 0, alpha: 1)
 
@@ -69,11 +68,14 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
 
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = character?.films[indexPath.row].title ?? "Title Not Found"
+            cell.detailTextLabel?.text = character.basicInfo[indexPath.row].label
+            cell.textLabel?.text = character.basicInfo[indexPath.row].value as? String ?? ""
         case 1:
-            cell.textLabel?.text = character?.starships[indexPath.row].name ?? "Starship Not Found"
+            cell.textLabel?.text = character.films[indexPath.row].title
         case 2:
-            cell.textLabel?.text = character?.vehicles[indexPath.row].name ?? "Vehicle Not Found"
+            cell.textLabel?.text = character.starships[indexPath.row].name
+        case 3:
+            cell.textLabel?.text = character.vehicles[indexPath.row].name
         default:
             cell.textLabel?.text = "Error?"
         }
