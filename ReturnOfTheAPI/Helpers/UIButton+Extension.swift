@@ -4,12 +4,13 @@
 //
 //  Created by Nathan on 1/30/18.
 //  Copyright © 2018 Nathan. All rights reserved.
-//
+
 
 import UIKit
 
 extension UIButton {
-
+    // This code comes primarily from a StackOverflow solution to positioning button labels
+    // and images
     func centerVertically(padding: CGFloat = 6.0) {
         guard let imageSize = self.imageView?.image?.size,
             let text = self.titleLabel?.text,
