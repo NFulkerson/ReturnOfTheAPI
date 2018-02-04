@@ -15,6 +15,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
     fileprivate var notificationToken: NotificationToken?
 
     var resource: Resource
+    var quickFacts: QuickFactsView?
     let client: SwapiClient = SwapiClient()
 
     init() {
@@ -28,7 +29,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(type(of: resource.items.first))
+        quickFacts = QuickFactsView(resource: .character)
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.backgroundColor = .black
@@ -40,6 +41,29 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        guard let facts = quickFacts else {
+            return
+        }
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(facts)
+        listTableView.tableHeaderView = container
+
+        NSLayoutConstraint.activate([
+            container.centerXAnchor.constraint(equalTo: listTableView.centerXAnchor),
+            container.widthAnchor.constraint(equalTo: listTableView.widthAnchor),
+            container.topAnchor.constraint(equalTo: listTableView.topAnchor),
+            container.heightAnchor.constraint(equalToConstant: CGFloat(80.0)),
+            facts.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            facts.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            facts.widthAnchor.constraint(equalTo: container.widthAnchor),
+            facts.heightAnchor.constraint(equalTo: container.heightAnchor)
+            ])
+        listTableView.tableHeaderView?.layoutIfNeeded()
+        listTableView.tableHeaderView = listTableView.tableHeaderView
+    }
+
     private func setupConstraints() {
         view.addSubview(listTableView)
         listTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +73,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
             listTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             listTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
             ])
+
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
