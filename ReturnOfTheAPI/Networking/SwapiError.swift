@@ -14,4 +14,5 @@ enum SwapiError: Error {
     case networkInterruption
     case invalidData(message: String)
     case decodingFailed(message: String)
+    case resourceNotFound(message: String)
 }
