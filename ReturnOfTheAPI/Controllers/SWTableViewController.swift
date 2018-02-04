@@ -33,6 +33,7 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
         header.addSubview(henlo)
         henlo.sizeToFit()
         header.translatesAutoresizingMaskIntoConstraints = false
+        henlo.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = header
 
         NSLayoutConstraint.activate([
@@ -45,7 +46,7 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let segmentControl = UISegmentedControl(items: ["Metric","Imperial"])
+        let segmentControl = UISegmentedControl(items: ["Metric", "Imperial"])
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(unitMeasureChanged(segment:)), for: .valueChanged)
         let barButtonItem = UIBarButtonItem(customView: segmentControl)
