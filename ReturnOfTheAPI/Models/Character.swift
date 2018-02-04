@@ -14,9 +14,9 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
     @objc dynamic var eyeColor: String = ""
     @objc dynamic var gender: String = ""
     @objc dynamic var hairColor: String = ""
-    @objc dynamic var height: Int = 0
+    @objc dynamic var rawHeight: Double = 0
     @objc dynamic var homeworldURL: String = ""
-    @objc dynamic var mass: Int = 0
+    @objc dynamic var mass: Double = 0
     @objc dynamic var name: String = ""
     @objc dynamic var skinColor: String = ""
     var filmsURL: [String] = []
@@ -29,6 +29,35 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
     let vehiclesList = List<String>()
     let filmsList = List<String>()
     let speciesList = List<String>()
+    private var unitFormatter: MeasurementFormatter {
+        let numberFormat = NumberFormatter()
+        numberFormat.maximumFractionDigits = 2
+        numberFormat.decimalSeparator = "."
+        switch self.providesUnitsIn {
+        case .imperial:
+            let formatter = MeasurementFormatter()
+            formatter.numberFormatter = numberFormat
+            formatter.locale = Locale(identifier: "en_US")
+            return formatter
+        case .metric:
+            let formatter = MeasurementFormatter()
+            formatter.numberFormatter = numberFormat
+            formatter.locale = Locale(identifier: "en_CA")
+            return formatter
+        }
+    }
+    enum UnitProvider {
+        case imperial
+        case metric
+    }
+    var providesUnitsIn: UnitProvider = .metric
+    var unitMass: Measurement<UnitMass> {
+        return Measurement(value: mass, unit: UnitMass.kilograms)
+    }
+
+    var unitHeight: Measurement<UnitLength> {
+        return Measurement(value: rawHeight, unit: UnitLength.centimeters)
+    }
 
     var homeworld: Planet? {
         guard let realm = try? Realm() else {
@@ -36,6 +65,21 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
         }
         let world = realm.object(ofType: Planet.self, forPrimaryKey: self.homeworldURL)
         return world
+    }
+
+    var basicInfo: [(label: String, value: Any)] {
+        unitFormatter.unitOptions = .naturalScale
+        return [
+            (label: "Name", value: name ),
+            (label: "Birth Year", value: birthYear),
+            (label: "Gender", value: gender),
+            (label: "Homeworld", value: homeworld?.name ?? "Unknown"),
+            (label: "Height", value: unitFormatter.string(from: unitHeight)),
+            (label: "Weight", value: unitFormatter.string(from: unitMass)),
+            (label: "Eye Color", value: eyeColor),
+            (label: "Hair Color", value: hairColor),
+            (label: "Skin Color", value: skinColor)
+        ]
     }
 
     var starships: [Starship] {
@@ -95,7 +139,7 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
         case filmsURL = "films"
         case gender
         case hairColor = "hair_color"
-        case height
+        case rawHeight = "height"
         case homeworld = "homeworld"
         case mass
         case name
@@ -114,21 +158,21 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
         filmsURL = try container.decode([String].self, forKey: .filmsURL)
         gender = try container.decode(String.self, forKey: .gender)
         hairColor = try container.decode(String.self, forKey: .hairColor)
-        let heightString = try container.decode(String.self, forKey: .height)
-        if heightString == "unknown" {
-            height = 0
-        } else if let numericHeight = Int(heightString) {
-            height = numericHeight
+        let heightString = try container.decode(String.self, forKey: .rawHeight)
+
+        if let numericHeight = Double(heightString) {
+            rawHeight = numericHeight
         } else {
-            height = 0
+            rawHeight = 0
         }
+        
         homeworldURL = try container.decode(String.self, forKey: .homeworld)
         starshipsURL = try container.decode([String].self, forKey: .starshipsURL)
         vehiclesURL = try container.decode([String].self, forKey: .vehiclesURL)
         let massString = try container.decode(String.self, forKey: .mass)
         if massString == "unknown" {
             mass = 0
-        } else if let numericMass = Int(massString) {
+        } else if let numericMass = Double(massString) {
             mass = numericMass
         } else {
             mass = 0
