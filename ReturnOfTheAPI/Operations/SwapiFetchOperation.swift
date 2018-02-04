@@ -21,6 +21,7 @@ class SwapiFetchOperation: Operation {
         do {
             if self.isCancelled {
                 print("Canceled fetch operation.")
+                self.error = SwapiError.networkInterruption
                 return
             }
             print("Fetching data from \(endpoint.url)")

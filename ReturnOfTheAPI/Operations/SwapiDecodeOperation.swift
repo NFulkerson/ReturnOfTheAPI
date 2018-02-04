@@ -40,32 +40,26 @@ class SwapiDecodeOperation: Operation {
             case .character:
                 let list = try decoder.decode(ResourceList<Character>.self, from: data)
                 checkForMoreResources(in: list)
-                print("Writing \(list.results.count) characters to realm.")
                 write(results: list.results, to: realm)
             case .film:
                 let list = try decoder.decode(ResourceList<Film>.self, from: data)
                 checkForMoreResources(in: list)
-                print("Writing \(list.results.count) films to realm.")
                 write(results: list.results, to: realm)
             case .planet:
                 let list = try decoder.decode(ResourceList<Planet>.self, from: data)
                 checkForMoreResources(in: list)
-                print("Writing \(list.results.count) planets to realm.")
                 write(results: list.results, to: realm)
             case .species:
                 let list = try decoder.decode(ResourceList<Species>.self, from: data)
                 checkForMoreResources(in: list)
-                print("Writing \(list.results.count) species to realm.")
                 write(results: list.results, to: realm)
             case .starship:
                 let list = try decoder.decode(ResourceList<Starship>.self, from: data)
                 checkForMoreResources(in: list)
-                print("Writing \(list.results.count) starships to realm.")
                 write(results: list.results, to: realm)
             case .vehicle:
                 let list = try decoder.decode(ResourceList<Vehicle>.self, from: data)
                 checkForMoreResources(in: list)
-                print("Writing \(list.results.count) vehicles to realm.")
                 write(results: list.results, to: realm)
             }
 
