@@ -12,7 +12,6 @@
 		D8218FF220201ED400A0AB43 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */; };
 		D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */; };
 		D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524761FC55B710036E697 /* SwapiFetchOperation.swift */; };
-		D85BDD311FFE3F8C00693221 /* BasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
 		D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AAA1FB1934300769FAD /* ResourceList.swift */; };
@@ -36,8 +35,10 @@
 		D8AD3C712019B8AE00B9A231 /* ResultLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD3C702019B8AE00B9A231 /* ResultLists.swift */; };
 		D8AD3C77201C377F00B9A231 /* StarshipDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD3C76201C377F00B9A231 /* StarshipDetailDataSource.swift */; };
 		D8AD3C79201C378C00B9A231 /* VehicleDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD3C78201C378C00B9A231 /* VehicleDetailDataSource.swift */; };
+		D8BFCECB2026A71A0030C3C2 /* QuickFactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFCECA2026A71A0030C3C2 /* QuickFactsView.swift */; };
 		D8C417451FFE08A900619913 /* SWTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C417441FFE08A900619913 /* SWTableViewController.swift */; };
 		D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */; };
+		D8E9E1762022E15600D1DAA3 /* MeasurementHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E9E1752022E15600D1DAA3 /* MeasurementHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,7 +62,6 @@
 		D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiDecodeOperation.swift; sourceTree = "<group>"; };
 		D82524761FC55B710036E697 /* SwapiFetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiFetchOperation.swift; sourceTree = "<group>"; };
-		D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
 		D8732AAA1FB1934300769FAD /* ResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceList.swift; sourceTree = "<group>"; };
@@ -85,8 +85,10 @@
 		D8AD3C702019B8AE00B9A231 /* ResultLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLists.swift; sourceTree = "<group>"; };
 		D8AD3C76201C377F00B9A231 /* StarshipDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipDetailDataSource.swift; sourceTree = "<group>"; };
 		D8AD3C78201C378C00B9A231 /* VehicleDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailDataSource.swift; sourceTree = "<group>"; };
+		D8BFCECA2026A71A0030C3C2 /* QuickFactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFactsView.swift; sourceTree = "<group>"; };
 		D8C417441FFE08A900619913 /* SWTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTableViewController.swift; sourceTree = "<group>"; };
 		D8C417461FFE0BEC00619913 /* CharacterDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDataSource.swift; sourceTree = "<group>"; };
+		D8E9E1752022E15600D1DAA3 /* MeasurementHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */,
 				D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */,
+				D8E9E1752022E15600D1DAA3 /* MeasurementHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -182,7 +185,6 @@
 				D882D3911FA2BE9800FF8D0A /* MenuViewController.swift */,
 				D85CF7231FBC226300CA7289 /* SwapiViewController.swift */,
 				D8C417441FFE08A900619913 /* SWTableViewController.swift */,
-				D85BDD301FFE3F8C00693221 /* BasicInfoTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,6 +192,7 @@
 		D882D3A51FA2C91500FF8D0A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D8BFCECA2026A71A0030C3C2 /* QuickFactsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */,
 				D8AD3C6F2019B3C300B9A231 /* ResourceProtocol.swift in Sources */,
 				D8AD3C77201C377F00B9A231 /* StarshipDetailDataSource.swift in Sources */,
+				D8E9E1762022E15600D1DAA3 /* MeasurementHelpers.swift in Sources */,
 				D882D3B51FA8EF1000FF8D0A /* Endpoint.swift in Sources */,
 				D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */,
 				D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */,
@@ -320,6 +324,7 @@
 				D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */,
 				D8AD3C712019B8AE00B9A231 /* ResultLists.swift in Sources */,
 				D882D3921FA2BE9800FF8D0A /* MenuViewController.swift in Sources */,
+				D8BFCECB2026A71A0030C3C2 /* QuickFactsView.swift in Sources */,
 				D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,
 				D8218FF220201ED400A0AB43 /* UIButton+Extension.swift in Sources */,
@@ -327,7 +332,6 @@
 				D8C417451FFE08A900619913 /* SWTableViewController.swift in Sources */,
 				D8AD3C79201C378C00B9A231 /* VehicleDetailDataSource.swift in Sources */,
 				D882D3B31FA339E800FF8D0A /* Species.swift in Sources */,
-				D85BDD311FFE3F8C00693221 /* BasicInfoTableViewController.swift in Sources */,
 				D882D3B11FA2D2E800FF8D0A /* Planet.swift in Sources */,
 				D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */,
 				D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */,
