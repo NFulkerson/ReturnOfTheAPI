@@ -25,6 +25,24 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
         fatalError("init(coder:) not implemented.")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        let header = UIView()
+        let henlo = UILabel()
+        henlo.text = "Henlo"
+        henlo.textColor = .white
+        header.addSubview(henlo)
+        henlo.sizeToFit()
+        header.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = header
+
+        NSLayoutConstraint.activate([
+            henlo.centerXAnchor.constraint(equalTo: header.centerXAnchor),
+            henlo.centerYAnchor.constraint(equalTo: header.centerYAnchor),
+            header.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            header.heightAnchor.constraint(equalToConstant: 80.0)
+            ])
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let segmentControl = UISegmentedControl(items: ["Metric","Imperial"])
@@ -35,6 +53,7 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
         tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
+
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
