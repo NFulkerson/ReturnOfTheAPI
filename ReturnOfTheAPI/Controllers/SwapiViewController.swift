@@ -47,6 +47,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
         }
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
+        facts.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(facts)
         listTableView.tableHeaderView = container
 
@@ -54,7 +55,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
             container.centerXAnchor.constraint(equalTo: listTableView.centerXAnchor),
             container.widthAnchor.constraint(equalTo: listTableView.widthAnchor),
             container.topAnchor.constraint(equalTo: listTableView.topAnchor),
-            container.heightAnchor.constraint(equalToConstant: CGFloat(80.0)),
+            container.heightAnchor.constraint(equalToConstant: CGFloat(100.0)),
             facts.centerXAnchor.constraint(equalTo: container.centerXAnchor),
             facts.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             facts.widthAnchor.constraint(equalTo: container.widthAnchor),
