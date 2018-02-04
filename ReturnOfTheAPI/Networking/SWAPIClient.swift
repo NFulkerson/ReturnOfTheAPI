@@ -86,7 +86,7 @@ import RealmSwift
             let realm = try Realm()
             switch resource {
             case .character:
-                let sortedChars = realm.objects(Character.self).sorted(byKeyPath: "height", ascending: false)
+                let sortedChars = realm.objects(Character.self).sorted(byKeyPath: "rawHeight", ascending: false)
                 print(sortedChars)
                 if let tallest = sortedChars.first {
                     return tallest.name
@@ -113,24 +113,37 @@ import RealmSwift
         }
     }
 
+    static func find<T: Object>(_ resource: T.Type, named name: String) -> T? {
+        do {
+            let realm = try Realm()
+            if let result = realm.objects(resource).filter("name = '\(name)'").first {
+                return result
+            }
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+
     static func smallest(_ resource: SwapiResource) -> String {
         do {
             let realm = try Realm()
             switch resource {
             case .character:
-                if let shortest = realm.objects(Character.self).filter("height > 0").sorted(byKeyPath: "height", ascending: true).first {
+                if let shortest = realm.objects(Character.self).filter("rawHeight > 0").sorted(
+                    byKeyPath: "rawHeight", ascending: true).first {
                     return shortest.name
                 } else {
                     return ""
                 }
             case .starship:
-                if let shortest = realm.objects(Starship.self).sorted(byKeyPath: "height", ascending: true).first {
+                if let shortest = realm.objects(Starship.self).sorted(byKeyPath: "length", ascending: true).first {
                     return shortest.name
                 } else {
                     return ""
                 }
             case .vehicle:
-                if let shortest = realm.objects(Vehicle.self).sorted(byKeyPath: "height", ascending: true).first {
+                if let shortest = realm.objects(Vehicle.self).sorted(byKeyPath: "length", ascending: true).first {
                     return shortest.name
                 } else {
                     return ""
