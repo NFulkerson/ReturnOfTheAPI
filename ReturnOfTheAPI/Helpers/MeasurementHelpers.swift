@@ -10,17 +10,17 @@ import Foundation
 
 struct Height {
     let formatter = MeasurementFormatter()
-    var _height: Double?
+    private var internalHeight: Double?
     var height: Double {
         get {
-            return _height!
+            return internalHeight!
         }
         set {
-            _height = newValue
+            internalHeight = newValue
             formatter.locale = Locale(identifier: "en_CA")
             formatter.numberFormatter.maximumFractionDigits = 2
 
-            if (newValue >= 1 && newValue <= 100) {
+            if newValue >= 1 && newValue <= 100 {
                 formatter.unitOptions = .providedUnit
             } else {
                 formatter.unitOptions = .naturalScale
