@@ -87,7 +87,6 @@ import RealmSwift
             switch resource {
             case .character:
                 let sortedChars = realm.objects(Character.self).sorted(byKeyPath: "rawHeight", ascending: false)
-                print(sortedChars)
                 if let tallest = sortedChars.first {
                     return tallest.name
                 } else {
