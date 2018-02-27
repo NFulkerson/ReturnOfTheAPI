@@ -11,6 +11,7 @@ import RealmSwift
 
 final class CharacterList: ResultPresentable {
     var items: Results<Character>
+    let resourceType: SwapiResource = .character
 
     init() {
         do {
@@ -24,6 +25,7 @@ final class CharacterList: ResultPresentable {
 
 final class StarshipList: ResultPresentable {
     var items: Results<Starship>
+    let resourceType: SwapiResource = .starship
 
     init() {
         do {
@@ -37,6 +39,7 @@ final class StarshipList: ResultPresentable {
 
 final class VehicleList: ResultPresentable {
     var items: Results<Vehicle>
+    let resourceType: SwapiResource = .vehicle
 
     init() {
         do {

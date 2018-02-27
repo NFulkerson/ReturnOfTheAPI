@@ -12,6 +12,7 @@ import RealmSwift
 protocol ResultPresentable {
     associatedtype Resource: Object, ResourcePresentable
     var items: Results<Resource> { get }
+    var resourceType: SwapiResource { get }
 
     init()
 }
