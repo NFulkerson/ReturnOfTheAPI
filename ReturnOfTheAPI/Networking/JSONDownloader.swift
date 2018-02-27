@@ -39,6 +39,7 @@ class JSONDownloader {
                 }
             } else {
                 print("""
+                    ------ERROR------
                     request:\(String(describing: request.url))\n
                     response:\(httpResponse.statusCode)
                     """)
