@@ -12,6 +12,7 @@
 		D8218FF220201ED400A0AB43 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */; };
 		D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */; };
 		D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524761FC55B710036E697 /* SwapiFetchOperation.swift */; };
+		D83CECA7204534BC004C6925 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83CECA6204534BC004C6925 /* Currency.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
 		D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732AAA1FB1934300769FAD /* ResourceList.swift */; };
@@ -62,6 +63,7 @@
 		D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiDecodeOperation.swift; sourceTree = "<group>"; };
 		D82524761FC55B710036E697 /* SwapiFetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiFetchOperation.swift; sourceTree = "<group>"; };
+		D83CECA6204534BC004C6925 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
 		D8732AAA1FB1934300769FAD /* ResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceList.swift; sourceTree = "<group>"; };
@@ -145,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				D80214A11FE8F06A00DAA8BE /* Helpers */,
-				D82524741FC55B710036E697 /* Operations */,
 				D882D3A41FA2C90900FF8D0A /* Controllers */,
 				D882D3A61FA2C92300FF8D0A /* Models */,
 				D882D3A11FA2C8E400FF8D0A /* Networking */,
@@ -162,6 +163,7 @@
 		D882D3A11FA2C8E400FF8D0A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D82524741FC55B710036E697 /* Operations */,
 				D8142C401FA9D86000305587 /* JSONDownloader.swift */,
 				D8142C421FA9D93100305587 /* SwapiError.swift */,
 				D89EABBC1FAAF9C000F13C04 /* SWAPIClient.swift */,
@@ -210,6 +212,7 @@
 				D8732AAA1FB1934300769FAD /* ResourceList.swift */,
 				D8AD3C6E2019B3C300B9A231 /* ResourceProtocol.swift */,
 				D8AD3C702019B8AE00B9A231 /* ResultLists.swift */,
+				D83CECA6204534BC004C6925 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				D8142C411FA9D86000305587 /* JSONDownloader.swift in Sources */,
 				D8C417471FFE0BEC00619913 /* CharacterDetailDataSource.swift in Sources */,
 				D882D3AF1FA2D23500FF8D0A /* Film.swift in Sources */,
+				D83CECA7204534BC004C6925 /* Currency.swift in Sources */,
 				D8142C431FA9D93100305587 /* SwapiError.swift in Sources */,
 				D89EABBD1FAAF9C000F13C04 /* SWAPIClient.swift in Sources */,
 				D8AD3C712019B8AE00B9A231 /* ResultLists.swift in Sources */,
