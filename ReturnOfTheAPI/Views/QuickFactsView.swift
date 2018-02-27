@@ -18,17 +18,17 @@ class QuickFactsView: UIView {
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
     }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
     }
 
     public convenience init(resource: SwapiResource) {
         self.init(frame: .zero)
+        print("Resource is \(resource)")
         self.factsAboutResource = resource
+        setupView()
     }
 
     override func updateConstraints() {
@@ -51,7 +51,9 @@ class QuickFactsView: UIView {
         self.addSubview(largestLabel)
         self.addSubview(smallestDetailLabel)
         self.addSubview(largestDetailLabel)
+        print("Setting smallest detail label for resource: \(factsAboutResource)")
         smallestDetailLabel.text = SwapiClient.smallest(factsAboutResource)
+        print("Setting largest detail label for resource: \(factsAboutResource)")
         largestDetailLabel.text = SwapiClient.largest(factsAboutResource)
 
         NSLayoutConstraint.activate([
