@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 @objcMembers class SwapiClient: NSObject {
-    fileprivate let downloader = JSONDownloader()
+
     lazy var operationQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.name = "com.nfulkerson.swapiclient"
@@ -86,6 +86,7 @@ import RealmSwift
             let realm = try Realm()
             switch resource {
             case .character:
+                print("Looking up tallest character.")
                 let sortedChars = realm.objects(Character.self).sorted(byKeyPath: "rawHeight", ascending: false)
                 if let tallest = sortedChars.first {
                     return tallest.name
@@ -93,17 +94,13 @@ import RealmSwift
                     return ""
                 }
             case .starship:
-                if let largest = realm.objects(Starship.self).sorted(byKeyPath: "length").first {
-                    return largest.name
-                } else {
-                    return ""
-                }
+                print("Looking up longest starship.")
+                let largest = realm.objects(Starship.self).sorted(byKeyPath: "length", ascending: false).first
+                return largest?.name ?? ""
             case .vehicle:
-                if let largest = realm.objects(Vehicle.self).sorted(byKeyPath: "length").first {
-                    return largest.name
-                } else {
-                    return ""
-                }
+                print("Looking up longest vehicle.")
+                let largest = realm.objects(Vehicle.self).sorted(byKeyPath: "length", ascending: false).first
+                return largest?.name ?? ""
             default:
                 return ""
             }
@@ -119,7 +116,9 @@ import RealmSwift
                 return result
             }
         } catch {
-            print(error)
+            let error = SwapiError.resourceNotFound(
+                message: "Could not find resource with given name.")
+            error.presentError()
         }
         return nil
     }
@@ -136,13 +135,13 @@ import RealmSwift
                     return ""
                 }
             case .starship:
-                if let shortest = realm.objects(Starship.self).sorted(byKeyPath: "length", ascending: true).first {
+                if let shortest = realm.objects(Starship.self).filter("length > 0").sorted(byKeyPath: "length", ascending: true).first {
                     return shortest.name
                 } else {
                     return ""
                 }
             case .vehicle:
-                if let shortest = realm.objects(Vehicle.self).sorted(byKeyPath: "length", ascending: true).first {
+                if let shortest = realm.objects(Vehicle.self).filter("length > 0").sorted(byKeyPath: "length", ascending: true).first {
                     return shortest.name
                 } else {
                     return ""
@@ -153,20 +152,6 @@ import RealmSwift
         } catch {
             return ""
         }
-    }
-
-    private func performRequest(with endpoint: Endpoint,
-                                completion: @escaping (Data?, SwapiError?) -> Void) {
-        let task = downloader.jsonDataTask(with: endpoint.request) { data, error in
-            DispatchQueue.main.async {
-                guard let data = data else {
-                    completion(nil, error)
-                    return
-                }
-                completion(data, nil)
-            }
-        }
-        task.resume()
     }
 
     private func networkIndicator(visible: Bool) {
