@@ -9,6 +9,7 @@
 import Foundation
 
 class SwapiFetchOperation: Operation {
+    fileprivate let downloader = JSONDownloader()
     let endpoint: Endpoint
     private(set) var data: Data?
     var error: SwapiError?
@@ -27,11 +28,29 @@ class SwapiFetchOperation: Operation {
             print("Fetching data from \(endpoint.url)")
             data = try Data(contentsOf: endpoint.url)
             print("we have data~!")
-        } catch {
-            self.error = SwapiError.invalidData(message: "Data is missing or invalid.")
+        } catch let issue as Error {
+
+            DispatchQueue.main.async {
+                let swapiError = SwapiError.operationError(message: issue.localizedDescription)
+                swapiError.presentError()
+            }
         }
 
         print("Finished execution of fetch operation")
+    }
+
+    private func performRequest(with endpoint: Endpoint,
+                                completion: @escaping (Data?, SwapiError?) -> Void) {
+        let task = downloader.jsonDataTask(with: endpoint.request) { data, error in
+
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            completion(data, nil)
+
+        }
+        task.resume()
     }
 
 }
