@@ -13,6 +13,7 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
 
     var resource: Resource
 
+    fileprivate var quickFacts: QuickFactsView?
     let swDetailIdentifier = "swDetail"
     let swSimpleIdentifier = "swSimple"
 
@@ -26,21 +27,21 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let header = UIView()
-        let henlo = UILabel()
-        henlo.text = "Henlo"
-        henlo.textColor = .white
-        header.addSubview(henlo)
-        henlo.sizeToFit()
-        header.translatesAutoresizingMaskIntoConstraints = false
-        henlo.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableHeaderView = header
+
+        guard let facts = quickFacts else {
+            return
+        }
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        facts.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(facts)
+        tableView.tableHeaderView = container
 
         NSLayoutConstraint.activate([
-            henlo.centerXAnchor.constraint(equalTo: header.centerXAnchor),
-            henlo.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            header.widthAnchor.constraint(equalTo: tableView.widthAnchor),
-            header.heightAnchor.constraint(equalToConstant: 80.0)
+            facts.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            facts.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            container.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            container.heightAnchor.constraint(equalToConstant: 80.0)
             ])
     }
 
@@ -54,7 +55,6 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
         tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
-
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -217,6 +217,10 @@ class SWTableViewController<Resource: ResourcePresentable>: UITableViewControlle
         }
 
         return cell
+    }
+
+    func setQuickFacts(resource: SwapiResource) {
+        quickFacts = QuickFactsView(resource: resource)
     }
 
 }

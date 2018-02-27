@@ -15,7 +15,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
     fileprivate var notificationToken: NotificationToken?
 
     var resource: Resource
-    var quickFacts: QuickFactsView?
+    fileprivate var quickFacts: QuickFactsView?
     let client: SwapiClient = SwapiClient()
 
     init() {
@@ -29,7 +29,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        quickFacts = QuickFactsView(resource: .character)
+        quickFacts = QuickFactsView(resource: resource.resourceType)
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.backgroundColor = .black
@@ -82,6 +82,7 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
         print("Did Select Row at \(indexPath.row)")
         print("Resource at index name: \(resource.items[indexPath.row])")
         let detailController = SWTableViewController(with: item)
+        detailController.setQuickFacts(resource: resource.resourceType)
         self.navigationController?.pushViewController(detailController, animated: true)
     }
 
@@ -137,13 +138,6 @@ class SwapiViewController<Resource: ResultPresentable>: UIViewController, UITabl
         cell.textLabel?.font = cell.textLabel?.font.withSize(22.0)
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = #colorLiteral(red: 0.348285228, green: 0.8181664348, blue: 1, alpha: 1)
-    }
-
-    func displayAlert(with error: String) {
-        let errorAlert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        errorAlert.addAction(okAction)
-        present(errorAlert, animated: true, completion: nil)
     }
 
 }
