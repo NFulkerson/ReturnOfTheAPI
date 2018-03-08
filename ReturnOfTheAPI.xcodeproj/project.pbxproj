@@ -11,7 +11,6 @@
 		D8142C431FA9D93100305587 /* SwapiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8142C421FA9D93100305587 /* SwapiError.swift */; };
 		D8218FF220201ED400A0AB43 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */; };
 		D82524781FC55B710036E697 /* SwapiDecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */; };
-		D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82524761FC55B710036E697 /* SwapiFetchOperation.swift */; };
 		D83CECA7204534BC004C6925 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83CECA6204534BC004C6925 /* Currency.swift */; };
 		D85CF7241FBC226300CA7289 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7231FBC226300CA7289 /* SwapiViewController.swift */; };
 		D85CF7281FBD40A200CA7289 /* ColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */; };
@@ -62,7 +61,6 @@
 		D8142C421FA9D93100305587 /* SwapiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiError.swift; sourceTree = "<group>"; };
 		D8218FF120201ED400A0AB43 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiDecodeOperation.swift; sourceTree = "<group>"; };
-		D82524761FC55B710036E697 /* SwapiFetchOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiFetchOperation.swift; sourceTree = "<group>"; };
 		D83CECA6204534BC004C6925 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		D85CF7231FBC226300CA7289 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		D85CF7271FBD40A200CA7289 /* ColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelpers.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				D82524751FC55B710036E697 /* SwapiDecodeOperation.swift */,
-				D82524761FC55B710036E697 /* SwapiFetchOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -235,7 +232,6 @@
 				D882D3881FA2BE9800FF8D0A /* Sources */,
 				D882D3891FA2BE9800FF8D0A /* Frameworks */,
 				D882D38A1FA2BE9800FF8D0A /* Resources */,
-				D882D3B61FA9A02F00FF8D0A /* ShellScript */,
 				D8732AC01FB35E2D00769FAD /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -293,22 +289,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		D882D3B61FA9A02F00FF8D0A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		D882D3881FA2BE9800FF8D0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -329,7 +309,6 @@
 				D8AD3C712019B8AE00B9A231 /* ResultLists.swift in Sources */,
 				D882D3921FA2BE9800FF8D0A /* MenuViewController.swift in Sources */,
 				D8BFCECB2026A71A0030C3C2 /* QuickFactsView.swift in Sources */,
-				D82524791FC55B710036E697 /* SwapiFetchOperation.swift in Sources */,
 				D882D3901FA2BE9800FF8D0A /* AppDelegate.swift in Sources */,
 				D8218FF220201ED400A0AB43 /* UIButton+Extension.swift in Sources */,
 				D8732AAB1FB1934300769FAD /* ResourceList.swift in Sources */,
