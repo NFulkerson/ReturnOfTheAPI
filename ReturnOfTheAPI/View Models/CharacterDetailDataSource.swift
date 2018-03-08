@@ -11,9 +11,11 @@ import UIKit
 class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdatable {
 
     private var character: Character
-
+    private let swDetailIdentifier = "swDetail"
+    private let swSimpleIdentifier = "swSimple"
     init(with character: Character) {
         self.character = character
+        print("Character added to data source: \(character.basicInfo[0])")
         super.init()
     }
 
@@ -58,7 +60,20 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "swDetail", for: indexPath)
+        let cell: UITableViewCell = {
+            if indexPath.section == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: swDetailIdentifier) else {
+                    return UITableViewCell(style: .value1, reuseIdentifier: swDetailIdentifier)
+                }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: swSimpleIdentifier) else {
+                    return UITableViewCell(style: .default, reuseIdentifier: swSimpleIdentifier)
+                }
+                return cell
+            }
+        }()
+        
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 0.8431372549, blue: 0, alpha: 1)
 
@@ -68,8 +83,9 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
 
         switch indexPath.section {
         case 0:
-            cell.detailTextLabel?.text = character.basicInfo[indexPath.row].label
-            cell.textLabel?.text = character.basicInfo[indexPath.row].value as? String ?? ""
+            cell.detailTextLabel?.text = character.basicInfo[indexPath.row].value as? String ?? ""
+            cell.textLabel?.text = character.basicInfo[indexPath.row].label
+
         case 1:
             cell.textLabel?.text = character.films[indexPath.row].title
         case 2:
@@ -79,8 +95,15 @@ class CharacterDetailDataSource: NSObject, UITableViewDataSource, ResourceUpdata
         default:
             cell.textLabel?.text = "Error?"
         }
-
+        configureAppearance(for: cell)
         return cell
+    }
+
+    private func configureAppearance(for cell: UITableViewCell) {
+        print("Configuring cell colors")
+        cell.textLabel?.textColor = UIColor(named: "BlueAccent")
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
+        cell.detailTextLabel?.textColor = .white
     }
 
 }
