@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 @objcMembers class SwapiClient: NSObject {
-
+    fileprivate let downloader = JSONDownloader()
     lazy var operationQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.name = "com.nfulkerson.swapiclient"
@@ -30,29 +30,32 @@ import RealmSwift
     }
 
     private func retrieveResources(at endpoint: Endpoint) {
-        let fetch = SwapiFetchOperation(with: endpoint)
-        let decode = SwapiDecodeOperation(for: endpoint.resource)
 
-        let adapter = BlockOperation { [unowned fetch, unowned decode] in
-            decode.jsonData = fetch.data
-        }
-
-        adapter.addDependency(fetch)
-        decode.addDependency(adapter)
-
-        decode.completionBlock = { [unowned decode, weak self] in
-            if decode.resourceHasMorePages {
-                if let weakSelf = self {
-                    weakSelf.retrieveResource(with: decode.nextUrl)
-                } else {
-                    print("We seem to have lost a reference")
+        performRequest(with: endpoint) { (data, error) in
+            guard let json = data else {
+                if let errorMessage = error {
+                    let swapiError = SwapiError.operationError(message: errorMessage.localizedDescription)
+                    swapiError.presentError()
                 }
+                return
             }
-
-            self?.networkIndicator(visible: false)
+            let decode = SwapiDecodeOperation(for: endpoint.resource)
+            decode.jsonData = json
+            decode.completionBlock = {
+                [unowned decode, weak self] in
+                if decode.resourceHasMorePages {
+                    print("Resource has another page: \(decode.nextUrl)")
+                    guard let weakSelf = self else {
+                        print("We lost a reference.")
+                        return
+                    }
+                    weakSelf.retrieveResource(with: decode.nextUrl)
+                }
+                self?.networkIndicator(visible: false)
+            }
+            self.networkIndicator(visible: true)
+            self.operationQueue.addOperation(decode)
         }
-        networkIndicator(visible: true)
-        operationQueue.addOperations([fetch, decode, adapter], waitUntilFinished: true)
     }
 
     func howManyResources() -> Int {
@@ -107,6 +110,20 @@ import RealmSwift
         } catch {
             return ""
         }
+    }
+
+    private func performRequest(with endpoint: Endpoint,
+                                completion: @escaping (Data?, SwapiError?) -> Void) {
+        let task = downloader.jsonDataTask(with: endpoint.request) { data, error in
+
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            completion(data, nil)
+
+        }
+        task.resume()
     }
 
     static func find<T: Object>(_ resource: T.Type, named name: String) -> T? {
