@@ -7,19 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-enum Currency {
-    case usd(Float)
-    case galacticCredits(Float)
+protocol Valuable: AnyObject {
+    var costInCredits: Double { get set }
+    var valueInDollars: Double { get set }
+    func convertedToDollars(_ creditValue: Double, rate: Double)
 
-    func convert(with rate: Float) -> Currency {
-        switch self {
-        case .usd(let amount):
-            let result = amount * rate
-            return Currency.galacticCredits(result)
-        case .galacticCredits(let amount):
-            let result = amount / rate
-            return Currency.usd(result)
-        }
+}
+
+extension Valuable {
+    func convertedToDollars(_ creditValue: Double, rate: Double) {
+        self.valueInDollars = creditValue * rate
     }
 }
+

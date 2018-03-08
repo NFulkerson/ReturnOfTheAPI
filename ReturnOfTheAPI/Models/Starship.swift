@@ -9,12 +9,14 @@
 import Foundation
 import RealmSwift
 
-final class Starship: RealmSwift.Object, Codable, ResourcePresentable {
+final class Starship: RealmSwift.Object, Codable, ResourcePresentable, UnitProvider, Valuable {
+
     @objc dynamic var name: String = ""
     @objc dynamic var model: String = ""
     @objc dynamic var starshipClass: String = ""
     @objc dynamic var manufacturer: String = ""
-    @objc dynamic var costInCredits: String = ""
+    @objc dynamic var costInCredits: Double = 0
+    var valueInDollars: Double = 0
     @objc dynamic var length: Double = 0
     @objc dynamic var crew: String = ""
     @objc dynamic var passengers: String = ""
@@ -23,12 +25,13 @@ final class Starship: RealmSwift.Object, Codable, ResourcePresentable {
     @objc dynamic var mglt: String = ""
     @objc dynamic var cargoCapacity: String = ""
     @objc dynamic var consumables: String = ""
+    var providesUnitsIn: UnitType = .metric
+    var unitLength: Length {
+        return Length(meters: length)
+    }
 
-    var unitLength: String {
-        let unitLength = Measurement(value: length, unit: UnitLength.meters)
-        let measureFormat = MeasurementFormatter()
-        measureFormat.unitOptions = .providedUnit
-        return measureFormat.string(from: unitLength)
+    override static func ignoredProperties() -> [String] {
+        return ["valueInDollars"]
     }
 
     var basicInfo: [(label: String, value: Any)] {
@@ -37,8 +40,9 @@ final class Starship: RealmSwift.Object, Codable, ResourcePresentable {
             (label: "Model", value: model),
             (label: "Class", value: starshipClass),
             (label: "Manufacturer", value: manufacturer),
-            (label: "Cost", value: costInCredits),
-            (label: "Length", value: unitLength),
+            (label: "Cost (Credits)", value: costInCredits.description),
+            (label: "Cost (USD)", value: valueInDollars.description),
+            (label: "Length", value: unitLength.description(in: providesUnitsIn)),
             (label: "Crew", value: crew),
             (label: "Passengers", value: passengers),
             (label: "Max Atmosphering Speed", value: maxAtmosphereSpeed),
@@ -113,7 +117,12 @@ final class Starship: RealmSwift.Object, Codable, ResourcePresentable {
         model = try container.decode(String.self, forKey: .model)
         starshipClass = try container.decode(String.self, forKey: .starshipClass)
         manufacturer = try container.decode(String.self, forKey: .manufacturer)
-        costInCredits = try container.decode(String.self, forKey: .costInCredits)
+        let rawCredits = try container.decode(String.self, forKey: .costInCredits)
+        if rawCredits == "unknown" {
+            costInCredits = 0
+        } else if let creditsAsDouble = Double(rawCredits) {
+            costInCredits = creditsAsDouble
+        }
         let lengthString = try container.decode(String.self, forKey: .length)
         if lengthString == "unknown" {
             length = 0

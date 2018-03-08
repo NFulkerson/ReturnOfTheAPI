@@ -9,13 +9,14 @@
 import Foundation
 import RealmSwift
 
-final class Vehicle: RealmSwift.Object, Codable, ResourcePresentable {
+final class Vehicle: RealmSwift.Object, Codable, ResourcePresentable, UnitProvider, Valuable {
     @objc dynamic var name: String = ""
     @objc dynamic var model: String = ""
     @objc dynamic var vehicleClass: String = ""
     @objc dynamic var manufacturer: String = ""
     @objc dynamic var length: Double = 0
-    @objc dynamic var costInCredits: String = ""
+    @objc dynamic var costInCredits: Double = 0
+    var valueInDollars: Double = 0
     @objc dynamic var crew: String = ""
     @objc dynamic var passengers: String = ""
     @objc dynamic var maxAtmosphereSpeed: String = ""
@@ -24,12 +25,14 @@ final class Vehicle: RealmSwift.Object, Codable, ResourcePresentable {
     var filmsURL: [String] = []
     var pilotsURL: [String] = []
     @objc dynamic var url: String = ""
+    var providesUnitsIn: UnitType = .metric
 
-    var unitLength: String {
-        let unitLength = Measurement(value: length, unit: UnitLength.meters)
-        let measureFormat = MeasurementFormatter()
-        measureFormat.unitOptions = .providedUnit
-        return measureFormat.string(from: unitLength)
+    var unitLength: Length {
+        return Length(meters: length)
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["valueInDollars"]
     }
 
     let filmsList = List<String>()
@@ -41,8 +44,9 @@ final class Vehicle: RealmSwift.Object, Codable, ResourcePresentable {
             (label: "Model", value: model),
             (label: "Class", value: vehicleClass),
             (label: "Manufacturer", value: manufacturer),
-            (label: "Length", value: unitLength),
-            (label: "Cost", value: costInCredits),
+            (label: "Length", value: unitLength.description(in: providesUnitsIn)),
+            (label: "Cost (Credits)", value: costInCredits.description),
+            (label: "Cost (USD)", value: valueInDollars.description),
             (label: "Crew", value: crew),
             (label: "Passengers", value: passengers),
             (label: "Max Atmosphering Speed", value: maxAtmosphereSpeed),
@@ -115,7 +119,14 @@ final class Vehicle: RealmSwift.Object, Codable, ResourcePresentable {
         } else {
             length = 0
         }
-        costInCredits = try container.decode(String.self, forKey: .costInCredits)
+        let rawCredits = try container.decode(String.self, forKey: .costInCredits)
+        if rawCredits == "unknown" {
+            print("Credit price unknown")
+            costInCredits = 0
+        } else if let creditsAsDouble = Double(rawCredits) {
+            print("Credit string cast to double")
+            costInCredits = creditsAsDouble
+        }
         crew = try container.decode(String.self, forKey: .crew)
         passengers = try container.decode(String.self, forKey: .passengers)
         maxAtmosphereSpeed = try container.decode(String.self, forKey: .maxAtmosphereSpeed)

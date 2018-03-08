@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
+final class Character: RealmSwift.Object, Decodable, ResourcePresentable, UnitProvider {
     @objc dynamic var birthYear: String = ""
     @objc dynamic var eyeColor: String = ""
     @objc dynamic var gender: String = ""
@@ -29,34 +29,15 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
     let vehiclesList = List<String>()
     let filmsList = List<String>()
     let speciesList = List<String>()
-    private var unitFormatter: MeasurementFormatter {
-        let numberFormat = NumberFormatter()
-        numberFormat.maximumFractionDigits = 2
-        numberFormat.decimalSeparator = "."
-        switch self.providesUnitsIn {
-        case .imperial:
-            let formatter = MeasurementFormatter()
-            formatter.numberFormatter = numberFormat
-            formatter.locale = Locale(identifier: "en_US")
-            return formatter
-        case .metric:
-            let formatter = MeasurementFormatter()
-            formatter.numberFormatter = numberFormat
-            formatter.locale = Locale(identifier: "en_CA")
-            return formatter
-        }
-    }
-    enum UnitProvider {
-        case imperial
-        case metric
-    }
-    var providesUnitsIn: UnitProvider = .metric
-    var unitMass: Measurement<UnitMass> {
-        return Measurement(value: mass, unit: UnitMass.kilograms)
+
+    var providesUnitsIn: UnitType = .metric
+
+    var unitMass: Weight {
+        return Weight(kilograms: mass)
     }
 
-    var unitHeight: Measurement<UnitLength> {
-        return Measurement(value: rawHeight, unit: UnitLength.centimeters)
+    var unitHeight: Height {
+        return Height(cmHeight: rawHeight)
     }
 
     var homeworld: Planet? {
@@ -68,14 +49,14 @@ final class Character: RealmSwift.Object, Decodable, ResourcePresentable {
     }
 
     var basicInfo: [(label: String, value: Any)] {
-        unitFormatter.unitOptions = .naturalScale
+        
         return [
             (label: "Name", value: name ),
             (label: "Birth Year", value: birthYear),
             (label: "Gender", value: gender),
             (label: "Homeworld", value: homeworld?.name ?? "Unknown"),
-            (label: "Height", value: unitFormatter.string(from: unitHeight)),
-            (label: "Weight", value: unitFormatter.string(from: unitMass)),
+            (label: "Height", value: unitHeight.description(in: providesUnitsIn)),
+            (label: "Weight", value: unitMass.description(in: providesUnitsIn)),
             (label: "Eye Color", value: eyeColor),
             (label: "Hair Color", value: hairColor),
             (label: "Skin Color", value: skinColor)
